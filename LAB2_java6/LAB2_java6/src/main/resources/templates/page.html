@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="/">Home</a> |
+<a href="/poly/url0">URL0</a> |
+<a href="/poly/url1">URL1</a> |
+<a href="/poly/url2">URL2</a> |
+<a href="/poly/url3">URL3</a> |
+<a href="/poly/url4">URL4</a>
+
+<h1>Page: <b th:text="${message}"></b></h1>
+
+<div th:switch="${@auth.isAuthenticated()}">
+    <ul th:case="true">
+        <li>Username: <b th:text="${@auth.username}"></b></li>
+        <li>Roles: <b th:text="${@auth.roles}"></b></li>
+        <li><a href="/logout">Sign-out</a></li>
+        <li th:if="${@auth.hasAnyRole('ADMIN')}">
+            <a href="#">Goto Administration</a>
+        </li>
+    </ul>
+    <ul th:case="false">
+        <li>Bạn chưa đăng nhập</li>
+    </ul>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<body>
+<div class="box">
+    <h2 th:text="${message}">Thông báo</h2>
+    <hr>
+    <a th:href="@{/}">Trang chủ</a>
+    <a th:href="@{/poly/url0}">URL 0</a>
+    <a th:href="@{/poly/url1}">URL 1</a>
+    <a th:href="@{/poly/url2}">URL 2</a>
+    <a th:href="@{/poly/url3}">URL 3</a>
+    <a th:href="@{/poly/url4}">URL 4</a>
+    <hr>
+</div>
+<div th:switch="${@auth.authenticated}">
+    <ul th:case="true">
+        <li>Username: <b>[[${@auth.username}]]</b></li>
+        <li>Roles: <b th:text="${@auth.roles}"></b></li>
+        <li><a href="/logout">Sign-out</a></li>
+        <li th:if="${@auth.hasAnyRole('ADMIN')}"><a href="/#">Goto Administration</a></li>
+    </ul>
+    <ul th:case="false">
+        <li>Bạn chưa đăng nhập</li>
+    </ul>
+</div>
+</body>
+</html>

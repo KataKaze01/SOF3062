@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sale lớn mùa lễ hội - Fahasa.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-white shadow-sm">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <a th:href="@{/}" class="navbar-brand">
+                <img th:src="@{/images/fahasa-logo.png}" alt="Fahasa.com" width="180" height="auto">
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mt-4">
+
+    <!-- Section: Đồ Chơi Mới Về -->
+    <h5 class="text-danger mb-3">Đồ Chơi Nổi Bật</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy1.png}" class="card-img-top" alt="Con Quay Yoyo">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Con Quay Yoyo Ngọn Lửa Bùng Cháy - Yoyo 22 EU677261R...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">424.500đ</span>
+                        <span class="badge bg-danger">-50%</span>
+                    </div>
+                    <del class="text-muted">849.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy2.png}" class="card-img-top" alt="Thú Bông Capybara">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Thú Bông Capybara 25 cm - Nuan Nuan BKP030</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">134.500đ</span>
+                        <span class="badge bg-danger">-50%</span>
+                    </div>
+                    <del class="text-muted">269.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy3.png}" class="card-img-top" alt="Robot Nắp Chai">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Robot Nắp Chai Bottleman BOT-09 - Fujinblack Phong Thần</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">164.500đ</span>
+                        <span class="badge bg-danger">-50%</span>
+                    </div>
+                    <del class="text-muted">329.000đ</del>
+                    <p class="text-success mt-2">Đã bán 14</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy4.png}" class="card-img-top" alt="Trống Thả Hình">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Trống Thả Hình Đa Năng - DK580001</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.500đ</span>
+                        <span class="badge bg-danger">-50%</span>
+                    </div>
+                    <del class="text-muted">125.000đ</del>
+                    <p class="text-success mt-2">Đã bán 11</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy5.png}" class="card-img-top" alt="Đồ Chơi Xe Biến Hình">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Xe Biến Hình Hồ Thần Địa Ngục Hellfire Tiger...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">209.500đ</span>
+                        <span class="badge bg-danger">-50%</span>
+                    </div>
+                    <del class="text-muted">419.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Đồ Chơi Nổi Bật -->
+    <h5 class="text-danger mb-3">Đồ Chơi Mới Về</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy6.png}" class="card-img-top" alt="Trading Card Game">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Mới Trading Card Game Chính Hãng: TCG Thẻ Bài Pokemon...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">120.000đ</span>
+                    </div>
+                    <del class="text-muted">-</del>
+                    <p class="text-success mt-2">Đã bán 163</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy7.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Mới Siêu Xe Hot Wheels C4982 - 76/250 - 76 Chevy Chevette</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy8.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Mới Siêu Xe Hot Wheels C4982 - 64/250 - Mercedes Benz Unimog...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy9.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Mới Siêu Xe Hot Wheels C4982 - 56/250 - 67 Camaro</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy10.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Mới Siêu Xe Hot Wheels C4982 - 69/250 - Volvo 240 Drift...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Xe HOTWHEELS - Mẫu Mới -->
+    <h5 class="text-danger mb-3">Xe HOTWHEELS - Mẫu Mới</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy11.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Siêu Xe Hot Wheels C4982 - 213/250 - Lotus Cortina</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 16</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy12.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Siêu Xe Hot Wheels C4982 - 22/250 - Bogzilla</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 2</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy13.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Siêu Xe Hot Wheels C4982 - 36/250 - 70 Dodge Hemi...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy14.png}" class="card-img-top" alt="Siêu Xe Hot Wheels">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Siêu Xe Hot Wheels C4982 - 232/250 - 1966 Bat Boat/Bateau</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 8</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy15.png}" class="card-img-top" alt="Đồ Chơi Mô Hình Siêu Xe">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình Siêu Xe - Hot Wheels C4982 - 147/250 - Spec...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Đồ Chơi Hướng Nghiệp -->
+    <h5 class="text-danger mb-3">Đồ Chơi Hướng Nghiệp</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy16.png}" class="card-img-top" alt="Đồ Chơi Trạm Xăng">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Trạm Xăng - Baoli 2012#B - Màu Xanh Dương</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">531.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">590.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy17.png}" class="card-img-top" alt="Đồ Chơi Trạm Xăng">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Trạm Xăng - Baoli 2012#R - Màu Đỏ</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">531.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">590.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy18.png}" class="card-img-top" alt="Bộ Đồ Chơi Bác Sĩ">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Bộ Đồ Chơi Bác Sĩ - Màu Xanh Có Đèn Và Âm Thanh Giả Lập DUK...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">178.750đ</span>
+                        <span class="badge bg-danger">-35%</span>
+                    </div>
+                    <del class="text-muted">275.000đ</del>
+                    <p class="text-success mt-2">Đã bán 15</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy19.png}" class="card-img-top" alt="Đồ Chơi Bác Sĩ">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Bác Sĩ - Firstar DK81148 (19 Chi Tiết)</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">169.000đ</span>
+                        <span class="badge bg-danger">-35%</span>
+                    </div>
+                    <del class="text-muted">260.000đ</del>
+                    <p class="text-success mt-2">Đã bán 20</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy20.png}" class="card-img-top" alt="Đồ Chơi Bé Làm Bác Sĩ">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Bé Làm Bác Sĩ - Mini Kitchen 623</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">71.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">79.000đ</del>
+                    <p class="text-success mt-2">Đã bán 2</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Thú Bông Fuggler -->
+    <h5 class="text-danger mb-3">Thú Bông Fuggler</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy21.png}" class="card-img-top" alt="Đồ Chơi Sưu Tầm Fuggler">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Sưu Tầm Fuggler Baby Fuggs 3.5 Inch - Zuru Toys 1570...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">170.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">189.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy22.png}" class="card-img-top" alt="Đồ Chơi Sưu Tầm Fuggler">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Sưu Tầm Fuggler Baby Fuggs 3.5 Inch - Zuru Toys 1570...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">170.100đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">189.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy23.png}" class="card-img-top" alt="Đồ Chơi Sưu Tầm Fuggler">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Sưu Tầm Fuggler Baby Fuggs 3.5 Inch - Zuru Toys 1570...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">170.100đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">189.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy24.png}" class="card-img-top" alt="Đồ Chơi Sưu Tầm Fuggler">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Sưu Tầm Fuggler Baby Fuggs 3.5 Inch - Zuru Toys 1570...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">170.100đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">189.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy25.png}" class="card-img-top" alt="Đồ Chơi Sưu Tầm Fuggler">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Sưu Tầm Fuggler Baby Fuggs 3.5 Inch - Zuru Toys 1570...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">170.100đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">189.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Đồ Chơi Sơ Sinh -->
+    <h5 class="text-danger mb-3">Đồ Chơi Sơ Sinh</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy26.png}" class="card-img-top" alt="Đồ Chơi Vòng Xoay Đại Dương">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Vòng Xoay Đại Dương - Baoli 1803#P - Màu Hồng</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">886.500đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">985.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy27.png}" class="card-img-top" alt="Đồ Chơi Vòng Xoay Đại Dương">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Vòng Xoay Đại Dương - Baoli 1803#B - Màu Xanh Dương</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">886.500đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">985.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy28.png}" class="card-img-top" alt="Tàu Hỏa Học Tập Đa Năng">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Tàu Hỏa Học Tập Đa Năng - Baoli 1909#P - Màu Hồng</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">792.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">880.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy29.png}" class="card-img-top" alt="Tàu Hỏa Học Tập Đa Năng">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Tàu Hỏa Học Tập Đa Năng - Baoli 1909#G - Màu Xanh Lá</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">792.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">880.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy30.png}" class="card-img-top" alt="Đồ Chơi TV Âm Nhạc">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi TV Âm Nhạc - Baoli 1501#B - Màu Xanh Dương</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">252.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">280.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Lắp Ráp Đơn Giản -->
+    <h5 class="text-danger mb-3">Lắp Ráp Đơn Giản</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy31.png}" class="card-img-top" alt="Đồ Chơi Lắp Ráp 12 Con Giáp">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Lắp Ráp 12 Con Giáp - Starmerry 6563 (SM198B) - Pig...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">14.000đ</span>
+                        <span class="badge bg-danger">-12%</span>
+                    </div>
+                    <del class="text-muted">16.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy32.png}" class="card-img-top" alt="Đồ Chơi Lắp Ráp Mô Hình Vũ Trụ">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Lắp Ráp Mô Hình Vũ Trụ Brainrot - J9990 - 05 (42 Mảnh...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">53.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">59.000đ</del>
+                    <p class="text-success mt-2">Đã bán 4</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy33.png}" class="card-img-top" alt="Đồ Chơi Lắp Ráp DIY">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Lắp Ráp DIY - Cresta DK81087 - Khủng Long Bạo Chúa...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">71.500đ</span>
+                        <span class="badge bg-danger">-35%</span>
+                    </div>
+                    <del class="text-muted">110.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy34.png}" class="card-img-top" alt="Đồ Chơi Lắp Ráp Na Tra 2">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Lắp Ráp Na Tra 2 - Ma Đồng Náo Hải - LY43 - Mẫu 8 (4...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">35.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">39.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy35.png}" class="card-img-top" alt="Bộ 2 Mô Hình Khủng Long Lắp Ráp">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Bộ 2 Mô Hình Khủng Long Lắp Ráp DIY 2001-1</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">80.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">89.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Đồ Chơi Gỗ -->
+    <h5 class="text-danger mb-3">Đồ Chơi Gỗ</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy36.png}" class="card-img-top" alt="Đồ Chơi Ghép Gỗ Cún Yêu">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Ghép Gỗ Cún Yêu - TP-3216</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">44.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">49.000đ</del>
+                    <p class="text-success mt-2">Đã bán 4</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy37.png}" class="card-img-top" alt="Đồ Chơi Ghép Gỗ Tàu Thủy">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Ghép Gỗ Tàu Thủy - TP-3261</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">44.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">49.000đ</del>
+                    <p class="text-success mt-2">Đã bán 3</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy38.png}" class="card-img-top" alt="Đồ Chơi Gỗ Woody">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Gỗ Woody - Tìm Cặp Đôi Gỗ</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">270.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">300.000đ</del>
+                    <p class="text-success mt-2">Đã bán 4</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy39.png}" class="card-img-top" alt="Đồ Chơi Ghép Gỗ Éch Xanh">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Ghép Gỗ Éch Xanh - TP-3223</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">44.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">49.000đ</del>
+                    <p class="text-success mt-2">Đã bán 5</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy40.png}" class="card-img-top" alt="Đồ Chơi Ghép Gỗ Động Vật Biển">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Ghép Gỗ Động Vật Biển - TP-3186</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">62.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">69.000đ</del>
+                    <p class="text-success mt-2">Đã bán 7</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Mô Hình Động Vật -->
+    <h5 class="text-danger mb-3">Mô Hình Động Vật</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy41.png}" class="card-img-top" alt="Đồ Chơi Mô Hình Khủng Long">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình Khủng Long Spinosaurus 12 Inch Phiên Bản...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">296.100đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">329.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy42.png}" class="card-img-top" alt="Đồ Chơi Quả Trứng Tiền Sử">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Quả Trứng Tiền Sử - Động Vật - Cresta DK81391</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">71.500đ</span>
+                        <span class="badge bg-danger">-35%</span>
+                    </div>
+                    <del class="text-muted">110.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy43.png}" class="card-img-top" alt="Đồ Chơi Quả Trứng Tiền Sử">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Quả Trứng Tiền Sử - Khủng Long - Cresta DK81392</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">71.500đ</span>
+                        <span class="badge bg-danger">-35%</span>
+                    </div>
+                    <del class="text-muted">110.000đ</del>
+                    <p class="text-success mt-2">Đã bán 2</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy44.png}" class="card-img-top" alt="Đồ Chơi Mẹ Con Gà Nhà Tung">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mẹ Con Gà Nhà Tung Tặng - 7539 (1107A)</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">54.500đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">61.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy45.png}" class="card-img-top" alt="Đồ Chơi Mô Hình 12 Sinh Vật Biển">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình 12 Sinh Vật Biển CollectA -1 - CollectA A1107</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">269.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">299.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Mô Hình Máy Bay -->
+    <h5 class="text-danger mb-3">Mô Hình Máy Bay</h5>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy46.png}" class="card-img-top" alt="Đồ Chơi Mô Hình Máy Bay Airport">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình Máy Bay Airport Vehicles - Majorette 8503001000...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">179.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">199.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy47.png}" class="card-img-top" alt="Đồ Chơi Máy Bay Đụng Biến Hình">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Máy Bay Đụng Biến Hình Khủng Long - Kingdom Toys 747...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">84.500đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">94.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy48.png}" class="card-img-top" alt="Đồ Chơi Máy Bay Đụng Biến Hình">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Máy Bay Đụng Biến Hình Khủng Long - Kingdom Toys 747...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">84.500đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">94.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy49.png}" class="card-img-top" alt="Đồ Chơi Mô Hình Máy Bay">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình Máy Bay Thương Mại Có Đèn Và Âm Thanh...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">179.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">199.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-0 shadow-sm">
+                <img th:src="@{/images/giaodien3/toy50.png}" class="card-img-top" alt="Đồ Chơi Mô Hình Máy Bay">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">Đồ Chơi Mô Hình Máy Bay Thương Mại Có Đèn Và Âm Thanh...</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-danger fw-bold">179.000đ</span>
+                        <span class="badge bg-danger">-10%</span>
+                    </div>
+                    <del class="text-muted">199.000đ</del>
+                    <p class="text-success mt-2">Đã bán 1</p>
+                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-3 mt-5">
+    <p>&copy; 2025 Fahasa.com</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

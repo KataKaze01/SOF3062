@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/J6_S0Authentication/J6_S0Authentication/pom.xml" />
+        <option value="$PROJECT_DIR$/lab1/lab1/pom.xml" />
+        <option value="$PROJECT_DIR$/LAB2_java6/LAB2_java6/pom.xml" />
+        <option value="$PROJECT_DIR$/lab3_java6/lab3_java6/pom.xml" />
+        <option value="$PROJECT_DIR$/lab4_java6/lab4_java6/pom.xml" />
+        <option value="$PROJECT_DIR$/assignment-selling-website/assignment-selling-website/pom.xml" />
+        <option value="$PROJECT_DIR$/ASM1/assignment-selling-website/pom.xml" />
+        <option value="$PROJECT_DIR$/shop/shop/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

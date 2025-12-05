@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- fragment để chèn vào page -->
+<div th:fragment="userFragment">
+    <div th:switch="${@auth.isAuthenticated()}">
+        <ul th:case="true">
+            <li>Username: <b>[[${@auth.getUsername()}]]</b></li>
+            <li>Roles: <b th:text="${@auth.getRoles()}"></b></li>
+            <li><a href="/logout">Sign-out</a></li>
+            <li th:if="${@auth.hasAnyRole('ADMIN')}">
+                <a href="#">Goto Administration</a>
+            </li>
+        </ul>
+
+        <ul th:case="false">
+            <li>Bạn chưa đăng nhập</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

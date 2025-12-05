@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student CRUD</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>Id: <input id="id"></div>
+        <div>Name: <input id="name"></div>
+        <div>Gender:
+	        <input name="gender" type="radio" id="male"> Male
+	        <input name="gender" type="radio" id="female"> Female
+        </div>
+        <div>Mark: <input id="mark"></div>
+    </div>
+    <hr>
+    <button onclick="ctrl.create()">Create</button>
+    <button onclick="ctrl.update()">Update</button>
+    <button onclick="ctrl.delete()">Delete</button>
+    <button onclick="ctrl.clear()">Reset</button>
+    <hr>
+    <table style="width:100%" border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Mark</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${e.id}</td>
+                <td>${e.name}</td>
+                <td>${e.gender}</td>
+                <td>${e.mark}</td>
+                <td>
+                    <a onclick="ctrl.edit('${e.id}')" href="#">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="./rest-crud.js"></script>
+</body>
+
+</html>

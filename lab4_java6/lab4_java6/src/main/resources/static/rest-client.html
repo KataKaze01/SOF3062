@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REST Client</title>
+</head>
+<body>
+    <h3>RESTful Web API</h3>
+    <hr>
+    <button onclick="doGetAll()">Get All</button>
+    <button onclick="doGetByKey()">Get By Key</button>
+    <button onclick="doPost()">Post</button>
+    <button onclick="doPut()">Put</button>
+    <button onclick="doDelete()">Delete</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const host = "https://fpolyedu.firebaseio.com";
+
+        function doGetAll() {
+            axios.get(`${host}/students.json`)
+                .then(res => console.log("Success", res.data))
+                .catch(err => console.log("Error", err));
+        }
+
+        function doGetByKey() {
+            let key = prompt("Nhập key cần xem:");
+            axios.get(`${host}/students/${key}.json`)
+                .then(res => console.log("Success", res.data))
+                .catch(err => console.log("Error", err));
+        }
+
+        function doPost() {
+            let data = {
+                id: "SV99",
+                name: "Sinh viên 99",
+                mark: 4.5,
+                gender: true
+            };
+            axios.post(`${host}/students.json`, data)
+                .then(res => console.log("Success", res.data))
+                .catch(err => console.log("Error", err));
+        }
+
+        function doPut() {
+            let key = prompt("Nhập key cần cập nhật:");
+            let data = {
+                id: "SV00",
+                name: "Sinh viên 00",
+                mark: 8.5,
+                gender: true
+            };
+            axios.put(`${host}/students/${key}.json`, data)
+                .then(res => console.log("Success", res.data))
+                .catch(err => console.log("Error", err));
+        }
+
+        function doDelete() {
+            let key = prompt("Nhập key cần xóa:");
+            axios.delete(`${host}/students/${key}.json`)
+                .then(res => console.log("Success", res.data))
+                .catch(err => console.log("Error", err));
+        }
+    </script>
+</body>
+</html>

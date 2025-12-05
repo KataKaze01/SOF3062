@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Trang chủ - Fahasa.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-white shadow-sm">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <a th:href="@{/}" class="navbar-brand">
+                <img th:src="@{/images/fahasa-logo.png}" alt="Fahasa.com" width="180" height="auto">
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-bar flex-grow-1 mx-4">
+                <form class="d-flex">
+                    <select class="form-select me-2" style="width: 80px;">
+                        <option value="">All</option>
+                        <option value="books">Sách</option>
+                        <option value="stationery">VPP</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                    <button type="submit" class="btn btn-danger ms-2"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Icons -->
+            <div class="header-icons d-flex align-items-center">
+                <!-- Nút mở Modal Giỏ hàng -->
+                <a href="#" class="text-dark me-4" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fas fa-shopping-cart fa-lg"></i> Giỏ Hàng
+                </a>
+                <!-- Nút mở Modal -->
+                <a href="#" class="text-dark me-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="far fa-user fa-lg"></i> Tài khoản
+                </a>
+                <!-- Ngôn ngữ -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/vietnam-flag.png" width="20" alt="VN">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Tiếng Việt</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mt-4">
+
+    <!-- Slider Banner -->
+    <div id="mainSlider" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="@{/images/banner1.jpg}" class="d-block w-100" alt="STABINI">
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/images/banner2.jpg}" class="d-block w-100" alt="Ngọt ngào trong từng hộp bánh">
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/images/banner3.jpg}" class="d-block w-100" alt="Giảm 50K">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Product Blocks -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-4">
+            <div class="card border-0">
+                <img th:src="@{/images/block4.jpg}" class="card-img-top" alt="Giáng sinh ấm áp">
+                <div class="card-body text-center">
+                    <a th:href="@{/giang-sinh-am-ap}" class="btn btn-danger">MUA NGAY</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-0">
+                <img th:src="@{/images/block2.jpg}" class="card-img-top" alt="December Must-Read">
+                <div class="card-body text-center">
+                    <a th:href="@{/december-must-read}" class="btn btn-danger">MUA NGAY</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-0">
+                <img th:src="@{/images/block3.jpg}" class="card-img-top" alt="Sale lớn mùa lễ hội">
+                <div class="card-body text-center">
+                    <a th:href="@{/sale-lon-mua-le-hoi}" class="btn btn-danger">MUA NGAY</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-0">
+                <img th:src="@{/images/block4.jpg}" class="card-img-top" alt="Giáng sinh ấm áp">
+                <div class="card-body text-center">
+                    <a th:href="@{/giang-sinh-am-ap}" class="btn btn-danger">MUA NGAY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Giỏ hàng -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="cartModalLabel">GIỎ HÀNG CỦA BẠN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><img th:src="@{/images/book1.png}" width="60" alt="Sách"></td>
+                                <td>Breath - Hơi Thở Nối Dài Sự Sống</td>
+                                <td>202.500đ</td>
+                                <td>
+                                    <input type="number" value="1" min="1" class="form-control w-75">
+                                </td>
+                                <td>202.500đ</td>
+                                <td><a href="#" class="text-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td><img th:src="@{/images/toy1.png}" width="60" alt="Đồ chơi"></td>
+                                <td>Con Quay Yoyo Ngọn Lửa Bùng Cháy</td>
+                                <td>424.500đ</td>
+                                <td>
+                                    <input type="number" value="1" min="1" class="form-control w-75">
+                                </td>
+                                <td>424.500đ</td>
+                                <td><a href="#" class="text-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <strong>Tổng tiền:</strong> <span class="text-danger fw-bold">627.000đ</span>
+                        </div>
+                        <div>
+                            <a th:href="@{/}" class="btn btn-outline-secondary me-2">Tiếp tục mua hàng</a>
+                            <a href="#" class="btn btn-success">Thanh toán</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Đăng nhập / Đăng ký -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="loginModalLabel">ĐĂNG NHẬP / ĐĂNG KÝ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs mb-3" id="loginTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Đăng nhập</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Đăng ký</button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab content -->
+                    <div class="tab-content" id="loginTabContent">
+                        <!-- Tab Đăng nhập -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Email hoặc Số điện thoại</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Nhập email hoặc số điện thoại">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Mật khẩu</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="remember">
+                                    <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">ĐĂNG NHẬP</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <p class="mb-0">Quên mật khẩu?</p>
+                                <a href="#" class="text-decoration-none">Lấy lại mật khẩu</a>
+                            </div>
+                        </div>
+
+                        <!-- Tab Đăng ký -->
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="fullname" class="form-label">Họ và tên</label>
+                                    <input type="text" class="form-control" id="fullname" placeholder="Nhập họ và tên">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="emailReg" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="emailReg" placeholder="Nhập email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="regPassword" class="form-label">Mật khẩu</label>
+                                    <input type="password" class="form-control" id="regPassword" placeholder="Tối thiểu 6 ký tự">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu">
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">ĐĂNG KÝ</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <p class="mb-0">Đã có tài khoản?</p>
+                                <a href="#" class="text-decoration-none" data-bs-toggle="tab" data-bs-target="#login" onclick="document.getElementById('login-tab').click()">Đăng nhập ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar + Main Content -->
+    <div class="row">
+        <!-- Sidebar: Danh mục sản phẩm -->
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    Danh mục sản phẩm
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a th:href="@{/sach-trong-nuoc}" class="text-dark">Sách Trong Nước</a></li>
+                    <li class="list-group-item"><a th:href="@{/foreign-books}" class="text-dark">FOREIGN BOOKS</a></li>
+                    <li class="list-group-item"><a th:href="@{/vpp-duong-cu-hoc-sinh}" class="text-dark">VPP - Dụng Cụ Học Sinh</a></li>
+                    <li class="list-group-item"><a th:href="@{/do-choi}" class="text-dark">Đồ Chơi</a></li>
+                    <li class="list-group-item"><a th:href="@{/lam-dep-suc-khoe}" class="text-dark">Làm Đẹp - Sức Khỏe</a></li>
+                    <li class="list-group-item"><a th:href="@{/sach-giao-khoa-2025}" class="text-dark">Sách Giáo Khoa 2025</a></li>
+                    <li class="list-group-item"><a th:href="@{/vpp-dchs-theo-thuong-hieu}" class="text-dark">VPP - DCHS Theo Thương Hiệu</a></li>
+                    <li class="list-group-item"><a th:href="@{/do-choi-theo-thuong-hieu}" class="text-dark">Đồ Chơi Theo Thương Hiệu</a></li>
+                    <li class="list-group-item"><a th:href="@{/bach-hoa-online-luu-niem}" class="text-dark">Bách Hóa Online - Lưu Niệm</a></li>
+                </ul>
+            </div>
+
+            <!-- Gợi ý -->
+            <div class="card">
+                <div class="card-header bg-light">
+                    <i class="fas fa-history me-2"></i> Gợi ý
+                </div>
+                <div class="card-body">
+                    <p><i class="fas fa-fire me-2 text-danger"></i> Sản phẩm bán chạy</p>
+                    <p><i class="fas fa-clock me-2 text-info"></i> Sản phẩm mới</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content: Sản phẩm -->
+        <div class="col-md-9">
+            <!-- Section: Sách Trong Nước (mặc định hiển thị) -->
+            <div id="sach-trong-nuoc" class="product-section">
+                <h5 class="text-danger mb-3">Sản phẩm nổi bật</h5>
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book1.png}" class="card-img-top" alt="Breath - Hơi Thở Nối Dài Sự Sống">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Breath - Hơi Thở Nối Dài Sự Sống - Góc Nhìn Mới Về...</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">202.500đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">225.000đ</del>
+                                <p class="text-success mt-2">Đã bán 870</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book2.png}" class="card-img-top" alt="Tâm Trí Chúng Ta Thay Đổi Như Thế Nào">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Tâm Trí Chúng Ta Thay Đổi Như Thế Nào</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">143.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">159.000đ</del>
+                                <p class="text-success mt-2">Đã bán 177</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book3.png}" class="card-img-top" alt="Nhật Ký Của Cha">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Nhật Ký Của Cha</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">107.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">119.000đ</del>
+                                <p class="text-success mt-2">Đã bán 843</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book4.png}" class="card-img-top" alt="Nhật Kí Nơi Xứ Lạ">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Nhật Kí Nơi Xứ Lạ - Tập 6 - Tặng Kèm Card PVC + Postcard</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">67.500đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">75.000đ</del>
+                                <p class="text-success mt-2">Đã bán 1.1k</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book5.png}" class="card-img-top" alt="Intentions - Hành Trình Đi Tìm Chính Mình">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Intentions - Hành Trình Đi Tìm Chính Mình</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">206.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">229.000đ</del>
+                                <p class="text-success mt-2">Đã bán 323</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book6.png}" class="card-img-top" alt="Simon Snow - Tập 1 - Lời Sấm Truyền Định Mệnh">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Simon Snow - Tập 1 - Lời Sấm Truyền Định Mệnh</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">269.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">299.000đ</del>
+                                <p class="text-success mt-2">Đã bán 177</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book7.png}" class="card-img-top" alt="Thoát Bẫy Thao Túng Tiền Bạc">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Thoát Bẫy Thao Túng Tiền Bạc</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">152.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">169.000đ</del>
+                                <p class="text-success mt-2">Đã bán 843</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img th:src="@{/images/spnb/book8.png}" class="card-img-top" alt="Người Khôn Chọn Bạn - Người Dại Chọn Bầy">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">Người Khôn Chọn Bạn - Người Dại Chọn Bầy</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-danger fw-bold">161.100đ</span>
+                                    <span class="badge bg-danger">-10%</span>
+                                </div>
+                                <del class="text-muted">179.000đ</del>
+                                <p class="text-success mt-2">Đã bán 1.1k</p>
+                                <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-3 mt-5">
+    <p>&copy; 2025 Fahasa.com</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function showProducts(categoryId) {
+        // Ẩn tất cả các section
+        const sections = document.querySelectorAll('.product-section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Hiển thị section tương ứng
+        document.getElementById(categoryId).style.display = 'block';
+    }
+</script>
+</body>
+</html>

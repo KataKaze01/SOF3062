@@ -1,0 +1,13 @@
+<a href="/">Home</a> |
+<a href="/poly/url0">URL0</a> |
+<a href="/poly/url1">URL1</a> |
+<a href="/poly/url2">URL2</a> |
+<a href="/poly/url3">URL3</a> |
+<a href="/poly/url4">URL4</a>
+<hr>
+<h1>Page: <b th:text="${message}"></b></h1>
+
+<ul>
+	<li th:text="${@userInfoService.username}"></li>
+	<li th:text="${@userInfoService.roles}"></li>
+</ul>

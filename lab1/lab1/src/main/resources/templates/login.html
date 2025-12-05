@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div class="message" th:text="${message}"></div>
+
+<i th:text="${message}"></i>
+<form action="/login/check" method="post">
+    <p>Username: <input name="username"></p>
+    <p>Password: <input name="password"></p>
+    <p><input name="remember-me" type="checkbox"> Remember me?</p>
+    <p><button>Login</button></p>
+</form>
+<a th:href="@{/}">Quay lại trang chủ</a>
+</body>
+</html>
