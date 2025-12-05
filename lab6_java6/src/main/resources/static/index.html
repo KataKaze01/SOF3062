@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6 - JWT Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h2>JWT Authentication Demo</h2>
+    <div>
+        Username: <input id="username" value="admin"><br>
+        Password: <input id="password" type="password" value="123"><br>
+        <button onclick="login()">Login to get Token</button>
+    </div>
+    <hr>
+    <p>Token hiện tại: <textarea id="tokenArea" rows="3" cols="50" readonly></textarea></p>
+    <hr>
+    <button onclick="callApi('/poly/url0')">Call Public URL0</button>
+    <button onclick="callApi('/poly/url1')">Call Authenticated URL1</button>
+    <button onclick="callApi('/poly/url2')">Call USER URL2</button>
+    <button onclick="callApi('/poly/url3')">Call ADMIN URL3</button>
+    <div id="result" style="margin-top: 20px; color: blue; font-weight: bold;"></div>
+
+    <script>
+        let jwtToken = '';
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            axios.post('http://localhost:8080/poly/login', {
+                username: username,
+                password: password
+            }).then(resp => {
+                jwtToken = resp.data.token;
+                document.getElementById('tokenArea').value = jwtToken;
+                document.getElementById('result').innerText = 'Đăng nhập thành công!';
+            }).catch(err => {
+                document.getElementById('result').innerText = 'Lỗi đăng nhập: ' + err.message;
+            });
+        }
+
+        function callApi(url) {
+            // Gửi Token kèm trong header Authorization
+            const config = {
+                headers: { 'Authorization': 'Bearer ' + jwtToken }
+            };
+
+            axios.get('http://localhost:8080' + url, config)
+                .then(resp => {
+                    document.getElementById('result').innerText = 'Thành công: ' + JSON.stringify(resp.data);
+                }).catch(err => {
+                    // Nếu lỗi 403 là do không đủ quyền
+                    if (err.response && err.response.status === 403) {
+                        document.getElementById('result').innerText = 'Lỗi 403: Bạn không có quyền truy cập URL này!';
+                    } else {
+                        document.getElementById('result').innerText = 'Lỗi gọi API: ' + err.message;
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

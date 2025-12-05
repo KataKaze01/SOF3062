@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8 - Spring Boot WebSocket Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #chat-page { height: 100vh; display: flex; flex-direction: column; }
+        #message-area { flex-grow: 1; overflow-y: auto; padding: 20px; background-color: #f8f9fa; }
+        .chat-message { margin-bottom: 15px; }
+        .chat-message .sender { font-weight: bold; color: #0d6efd; }
+        .event-message { color: #6c757d; font-style: italic; text-align: center; margin: 10px 0; }
+        .online-users { background: #e9ecef; padding: 15px; height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="app" class="container-fluid h-100">
+        
+        <div v-if="!isConnected" class="row justify-content-center align-items-center h-100">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Tham gia Chat</h3>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nhập tên của bạn..." v-model="username" @keyup.enter="connect">
+                        </div>
+                        <button class="btn btn-primary w-100" @click="connect" :disabled="!username">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-else class="row h-100">
+            <div class="col-md-9 p-0 d-flex flex-column" style="height: 100vh;">
+                <div class="bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                    <h5 class="m-0">Phòng Chat Chung - Xin chào, {{username}}!</h5>
+                    <button class="btn btn-danger btn-sm" @click="disconnect">Disconnect</button>
+                </div>
+
+                <div id="message-area" ref="messageArea">
+                    <div v-for="(msg, index) in messages" :key="index">
+                        <div v-if="msg.type === 'CHAT'" class="chat-message">
+                            <span class="sender">{{ msg.sender }}:</span>
+                            <span>{{ msg.content }}</span>
+                        </div>
+                        <div v-else class="event-message">
+                            {{ msg.sender }} {{ msg.content }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-white border-top">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Nhập tin nhắn..." v-model="messageContent" @keyup.enter="sendMessage">
+                        <button class="btn btn-success" @click="sendMessage" :disabled="!messageContent">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 online-users border-start">
+                <h5 class="mb-3">Đang Online ({{ onlineUsers.length }})</h5>
+                <ul class="list-group">
+                    <li class="list-group-item" v-for="user in onlineUsers" :key="user">
+                        🟢 {{ user }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                isConnected: false,
+                stompClient: null,
+                messageContent: '',
+                messages: [],
+                onlineUsers: []
+            },
+            methods: {
+                connect() {
+                    if (this.username.trim()) {
+                        const socket = new SockJS('/ws');
+                        this.stompClient = Stomp.over(socket);
+                        this.stompClient.debug = null; // Tắt log debug cho gọn console
+
+                        this.stompClient.connect({}, this.onConnected, this.onError);
+                    }
+                },
+                onConnected() {
+                    this.isConnected = true;
+                    // Subscribe vào topic chung để nhận tin nhắn
+                    this.stompClient.subscribe('/topic/public', this.onMessageReceived);
+                    // Gửi thông báo JOIN kèm username lên server
+                    this.stompClient.send("/app/chat.addUser", {}, JSON.stringify({ sender: this.username, type: 'JOIN' }));
+                },
+                onError(error) {
+                    alert('Không thể kết nối đến WebSocket Server. Vui lòng reload trang!');
+                    console.error(error);
+                },
+                sendMessage() {
+                    if (this.messageContent && this.stompClient) {
+                        const chatMessage = {
+                            sender: this.username,
+                            content: this.messageContent,
+                            type: 'CHAT'
+                        };
+                        this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+                        this.messageContent = '';
+                    }
+                },
+                onMessageReceived(payload) {
+                    const message = JSON.parse(payload.body);
+
+                    // Nếu là tin nhắn JOIN hoặc LEAVE, cập nhật lại danh sách online từ server gửi về
+                    if (message.type === 'JOIN' || message.type === 'LEAVE') {
+                        if (message.onlineUsers) {
+                            this.onlineUsers = message.onlineUsers;
+                        }
+                    }
+
+                    this.messages.push(message);
+                    // Tự động cuộn xuống cuối khi có tin nhắn mới
+                    this.$nextTick(() => {
+                        const area = this.$refs.messageArea;
+                        if (area) area.scrollTop = area.scrollHeight;
+                    });
+                },
+                disconnect() {
+                    if (this.stompClient) {
+                        this.stompClient.disconnect();
+                    }
+                    this.isConnected = false;
+                    this.username = '';
+                    this.messages = [];
+                }
+            }
+        });
+    </script>
+</body>
+</html>

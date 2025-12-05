@@ -8,6 +8,7 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
         </processorPath>
+        <module name="lab5_java6.main" />
       </profile>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -48,6 +49,12 @@
       <module name="lab2_java6.main" options="-parameters" />
       <module name="lab2_java6.test" options="-parameters" />
       <module name="lab4_java6" options="-parameters" />
+      <module name="lab5_java6" options="-parameters" />
+      <module name="lab5_java6.main" options="-parameters" />
+      <module name="lab5_java6.test" options="-parameters" />
+      <module name="lab8_java6" options="-parameters" />
+      <module name="lab8_java6.main" options="-parameters" />
+      <module name="lab8_java6.test" options="-parameters" />
       <module name="poly.demo" options="-parameters" />
       <module name="shop" options="-parameters" />
     </option>
