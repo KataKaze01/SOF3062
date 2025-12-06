@@ -3,27 +3,20 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
-        </processorPath>
-        <module name="lab5_java6.main" />
-      </profile>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="poly.demo" />
+        <module name="shop" />
       </profile>
       <profile name="Annotation profile for shop" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
-        <module name="shop" />
         <module name="lab4_java6" />
         <module name="lab1" />
         <module name="TS00727_java6_test" />
@@ -52,6 +45,12 @@
       <module name="lab5_java6" options="-parameters" />
       <module name="lab5_java6.main" options="-parameters" />
       <module name="lab5_java6.test" options="-parameters" />
+      <module name="lab6_java6" options="-parameters" />
+      <module name="lab6_java6.main" options="-parameters" />
+      <module name="lab6_java6.test" options="-parameters" />
+      <module name="lab7_java6" options="-parameters" />
+      <module name="lab7_java6.main" options="-parameters" />
+      <module name="lab7_java6.test" options="-parameters" />
       <module name="lab8_java6" options="-parameters" />
       <module name="lab8_java6.main" options="-parameters" />
       <module name="lab8_java6.test" options="-parameters" />

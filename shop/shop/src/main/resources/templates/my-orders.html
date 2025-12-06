@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Đơn hàng của tôi - Fahasa.com</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 
@@ -15,6 +15,62 @@
             <a th:href="@{/}" class="navbar-brand">
                 <img th:src="@{/images/fahasa-logo.png}" alt="Fahasa.com" width="180" height="auto">
             </a>
+
+            <!-- Search Bar -->
+            <div class="search-bar flex-grow-1 mx-4">
+                <form class="d-flex">
+                    <select class="form-select me-2" style="width: 80px;">
+                        <option value="">All</option>
+                        <option value="books">Sách</option>
+                        <option value="stationery">VPP</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                    <button type="submit" class="btn btn-danger ms-2"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Icons -->
+            <div class="header-icons d-flex align-items-center">
+                <a th:href="@{/cart}" class="text-dark me-4">
+                    <i class="fas fa-shopping-cart fa-lg"></i> Giỏ Hàng
+                </a>
+
+                <!-- Nếu đã đăng nhập -->
+                <th:block th:if="${#authentication?.isAuthenticated()}">
+                    <div class="dropdown">
+                        <a class="text-dark me-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-user fa-lg"></i> Xin chào, <strong th:text="${#authentication.name}">Người dùng</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/profile}"><i class="fas fa-user me-2"></i> Tài khoản của tôi</a></li>
+                            <li><a class="dropdown-item" th:href="@{/my-orders}"><i class="fas fa-receipt me-2"></i> Đơn hàng của tôi</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </th:block>
+                <th:block th:unless="${#authentication?.isAuthenticated()}">
+                    <!-- Không hiển thị gì nếu chưa đăng nhập -->
+                </th:block>
+
+                <!-- Nếu chưa đăng nhập -->
+                <th:block th:unless="${#authentication?.isAuthenticated()}">
+                    <a th:href="@{/login}" class="text-dark me-4">
+                        <i class="far fa-user fa-lg"></i> Tài khoản
+                    </a>
+                </th:block>
+
+                <!-- Ngôn ngữ -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/vietnam-flag.png" width="20" alt="VN">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Tiếng Việt</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -28,7 +84,7 @@
                 <a th:href="@{/profile}" class="list-group-item list-group-item-action">
                     <i class="fas fa-user me-2"></i> Tài khoản của tôi
                 </a>
-                <a href="#" class="list-group-item list-group-item-action active">
+                <a th:href="@{/my-orders}" class="list-group-item list-group-item-action active">
                     <i class="fas fa-receipt me-2"></i> Đơn hàng của tôi
                 </a>
             </div>
@@ -37,6 +93,8 @@
         <!-- Orders Content -->
         <div class="col-md-9">
             <h4><i class="fas fa-receipt me-2"></i> Đơn hàng của tôi</h4>
+
+            <!-- Danh sách đơn hàng -->
             <div class="table-responsive mt-4">
                 <table class="table table-bordered">
                     <thead class="table-light">
@@ -49,27 +107,44 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>#ORD-1001</td>
-                        <td>02/12/2025</td>
-                        <td>627.000đ</td>
-                        <td><span class="badge bg-warning">Đã xác nhận</span></td>
-                        <td><a href="#" class="btn btn-sm btn-outline-primary">Xem</a></td>
+                    <tr th:each="order : ${orders}">
+                        <td th:text="'#' + ${order.id}">#1001</td>
+                        <td th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm')}">02/12/2025</td>
+                        <td th:text="${#numbers.formatCurrency(order.totalAmount)}">627.000đ</td>
+                        <td>
+                            <span class="badge bg-warning" th:if="${order.status == 'Đang xử lý'}">Đang xử lý</span>
+                            <span class="badge bg-info" th:if="${order.status == 'Đang giao'}">Đang giao</span>
+                            <span class="badge bg-success" th:if="${order.status == 'Đã giao'}">Đã giao</span>
+                            <span class="badge bg-danger" th:if="${order.status == 'Đã hủy'}">Đã hủy</span>
+                        </td>
+                        <td>
+                            <a th:href="@{/order/detail/{id}(id=${order.id})}" class="btn btn-sm btn-outline-primary">Xem</a>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>#ORD-1002</td>
-                        <td>03/12/2025</td>
-                        <td>1.200.000đ</td>
-                        <td><span class="badge bg-success">Đã giao</span></td>
-                        <td><a href="#" class="btn btn-sm btn-outline-primary">Xem</a></td>
+                    <tr th:if="${orders.isEmpty()}">
+                        <td colspan="5" class="text-center text-muted">Bạn chưa có đơn hàng nào.</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+
+            <!-- Pagination (nếu cần) -->
+            <!--
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                </ul>
+            </nav>
+            -->
         </div>
     </div>
 </main>
 
+<!-- Footer -->
 <footer class="bg-light text-center py-3 mt-5">
     <p>&copy; 2025 Fahasa.com</p>
 </footer>

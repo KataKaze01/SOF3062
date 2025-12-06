@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Tài khoản của tôi - Fahasa.com</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 
@@ -15,6 +15,42 @@
             <a th:href="@{/}" class="navbar-brand">
                 <img th:src="@{/images/fahasa-logo.png}" alt="Fahasa.com" width="180" height="auto">
             </a>
+
+            <!-- Search Bar -->
+            <div class="search-bar flex-grow-1 mx-4">
+                <form class="d-flex">
+                    <select class="form-select me-2" style="width: 80px;">
+                        <option value="">All</option>
+                        <option value="books">Sách</option>
+                        <option value="stationery">VPP</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                    <button type="submit" class="btn btn-danger ms-2"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Icons -->
+            <div class="header-icons d-flex align-items-center">
+                <a th:href="@{/cart}" class="text-dark me-4">
+                    <i class="fas fa-shopping-cart fa-lg"></i> Giỏ Hàng
+                </a>
+
+                <!-- Nếu đã đăng nhập -->
+                <th:block th:if="${#authentication?.isAuthenticated()}">
+                    <div class="dropdown">
+                        <a class="text-dark me-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-user fa-lg"></i> Xin chào, <strong th:text="${#authentication.name}">Người dùng</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/profile}"><i class="fas fa-user me-2"></i> Tài khoản của tôi</a></li>
+                            <li><a class="dropdown-item" th:href="@{/my-orders}"><i class="fas fa-receipt me-2"></i> Đơn hàng của tôi</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </th:block>
+
+            </div>
         </div>
     </div>
 </header>
@@ -25,7 +61,7 @@
         <!-- Sidebar -->
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">
+                <a th:href="@{/profile}" class="list-group-item list-group-item-action active">
                     <i class="fas fa-user me-2"></i> Tài khoản của tôi
                 </a>
                 <a th:href="@{/my-orders}" class="list-group-item list-group-item-action">
@@ -37,30 +73,31 @@
         <!-- Profile Content -->
         <div class="col-md-9">
             <h4><i class="fas fa-user me-2"></i> Quản lý tài khoản</h4>
-            <form class="mt-4">
+            <form class="mt-4" th:object="${user}" th:action="@{/profile}" method="post">
+                <input type="hidden" th:field="*{id}"> <!-- ID người dùng -->
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="fullname" class="form-label">Họ và tên</label>
-                        <input type="text" class="form-control" id="fullname" value="Nguyễn Văn A">
+                        <label for="name" class="form-label">Họ và tên</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" value="vana@example.com">
+                        <input type="email" th:field="*{email}" class="form-control" id="email" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" id="phone" value="0901234567">
+                        <input type="text" th:field="*{phone}" class="form-control" id="phone">
                     </div>
                     <div class="col-md-6">
                         <label for="address" class="form-label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="address" value="Quận 1, TP. Hồ Chí Minh">
+                        <input type="text" th:field="*{address}" class="form-control" id="address">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mật khẩu mới</label>
-                    <input type="password" class="form-control" id="password" placeholder="Để trống nếu không đổi">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Để trống nếu không đổi">
                 </div>
                 <button type="submit" class="btn btn-primary">CẬP NHẬT THÔNG TIN</button>
             </form>
@@ -68,6 +105,7 @@
     </div>
 </main>
 
+<!-- Footer -->
 <footer class="bg-light text-center py-3 mt-5">
     <p>&copy; 2025 Fahasa.com</p>
 </footer>

@@ -33,13 +33,25 @@
             <!-- Icons -->
             <div class="header-icons d-flex align-items-center">
                 <!-- Nút mở Modal Giỏ hàng -->
-                <a href="#" class="text-dark me-4" data-bs-toggle="modal" data-bs-target="#cartModal">
-                    <i class="fas fa-shopping-cart fa-lg"></i> Giỏ Hàng
-                </a>
-                <!-- Nút mở Modal -->
-                <a href="#" class="text-dark me-4" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="far fa-user fa-lg"></i> Tài khoản
-                </a>
+                <!-- Icon người dùng -->
+                <th:block th:unless="${#authentication?.isAuthenticated()}">
+                    <a th:href="@{/login}" class="text-dark me-4">
+                        <i class="far fa-user fa-lg"></i> Tài khoản
+                    </a>
+                </th:block>
+                <th:block th:if="${#authentication?.isAuthenticated()}">
+                    <div class="dropdown">
+                        <a class="text-dark me-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-user fa-lg"></i> Xin chào, <strong th:text="${#authentication.name}">Người dùng</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/profile}"><i class="fas fa-user me-2"></i> Tài khoản của tôi</a></li>
+                            <li><a class="dropdown-item" th:href="@{/my-orders}"><i class="fas fa-receipt me-2"></i> Đơn hàng của tôi</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </th:block>
                 <!-- Ngôn ngữ -->
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

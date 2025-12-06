@@ -4,7 +4,7 @@ import java.net.HttpURLConnection;
 
 public class RestClientDemo {
     // Bạn có thể đổi thành link Firebase của bạn hoặc giữ localhost nếu đang chạy ứng dụng Spring Boot
-    static String HOST = "http://localhost:8080/simple/students";
+    static String HOST = "x";
 
     public static void main(String[] args) throws Exception {
         System.out.println("--- GET ALL ---");
