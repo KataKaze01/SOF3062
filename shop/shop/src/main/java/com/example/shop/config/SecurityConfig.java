@@ -32,7 +32,7 @@ public class SecurityConfig {
                                 "/sach-trong-nuoc",
                                 "/foreign-books",
                                 "/css/**", "/js/**", "/images/**",
-                                "/login", "/register"
+                                "/login", "/register", "/forgot-password", "/reset-password"
                         ).permitAll()
                         .requestMatchers("/profile", "/my-orders", "/cart", "/checkout").authenticated()
                         .anyRequest().authenticated()

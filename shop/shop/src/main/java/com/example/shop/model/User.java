@@ -26,6 +26,17 @@ public class User {
 
     private String phone;
     private String address;
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Transient
+    private String currentPassword; // Mật khẩu hiện tại
+
+    @Transient
+    private String newPassword; // Mật khẩu mới
+
+    @Transient
+    private String confirmNewPassword;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -65,4 +76,31 @@ public class User {
 
     public Set<Role> getRoles() { return roles; }
     public void setRoles(Set<Role> roles) { this.roles = roles; }
+    public String getResetToken() {
+        return resetToken;
+    }
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmNewPassword() {
+        return confirmNewPassword;
+    }
+    public void setConfirmNewPassword(String confirmNewPassword) {
+        this.confirmNewPassword = confirmNewPassword;
+    }
 }

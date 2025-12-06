@@ -32,17 +32,37 @@
 
             <!-- Icons -->
             <div class="header-icons d-flex align-items-center">
+                <th:block th:if="${message}">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <span th:text="${message}">Thông báo thành công</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </th:block>
+                <th:block th:if="${error}">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <span th:text="${error}">Thông báo lỗi</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </th:block>
                 <!-- Nút mở Modal Giỏ hàng -->
-                <!-- Icon người dùng -->
-                <th:block th:unless="${#authentication?.isAuthenticated()}">
-                    <a th:href="@{/login}" class="text-dark me-4">
-                        <i class="far fa-user fa-lg"></i> Tài khoản
+                <!-- Icon giỏ hàng -->
+                <th:block th:if="${#authentication?.isAuthenticated()}">
+                    <a th:href="@{/cart}" class="text-dark me-4 position-relative">
+                        <i class="fas fa-shopping-cart fa-lg"></i> Giỏ hàng
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" th:if="${cartItemCount > 0}" th:text="${cartItemCount}">0</span>
                     </a>
                 </th:block>
-                <th:block th:if="${#authentication?.isAuthenticated()}">
+                <th:block th:unless="${#authentication?.isAuthenticated()}">
+                    <a href="#" class="text-dark me-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-shopping-cart fa-lg"></i> Giỏ hàng
+                    </a>
+                </th:block>
+                <!-- Icon người dùng -->
+                    <!-- Nếu đã đăng nhập -->
+                <th:block th:if="${#authentication?.principal?.username != null}">
                     <div class="dropdown">
                         <a class="text-dark me-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-user fa-lg"></i> Xin chào, <strong th:text="${#authentication.name}">Người dùng</strong>
+                            <i class="far fa-user fa-lg"></i> Xin chào, <strong th:text="${#authentication.principal.username}">Người dùng</strong>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" th:href="@{/profile}"><i class="fas fa-user me-2"></i> Tài khoản của tôi</a></li>
@@ -51,6 +71,12 @@
                             <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
                         </ul>
                     </div>
+                </th:block>
+                <th:block th:unless="${#authentication?.principal?.username != null}">
+                    <!-- CHƯA ĐĂNG NHẬP: Hiện nút "Tài khoản" -->
+                    <a th:href="@{/login}" class="text-dark me-4">
+                        <i class="far fa-user fa-lg"></i> đăng nhập/đăng ký
+                    </a>
                 </th:block>
                 <!-- Ngôn ngữ -->
                 <div class="dropdown">
