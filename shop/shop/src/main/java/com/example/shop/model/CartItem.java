@@ -2,7 +2,6 @@ package com.example.shop.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cart_items")
@@ -12,25 +11,27 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    private int quantity = 1;
+    @Column(nullable = false)
+    private Integer quantity = 1;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "unit_price", precision = 19, scale = 2)
+    private BigDecimal unitPrice;
 
     public CartItem() {}
 
-    public CartItem(User user, Product product, int quantity) {
+    public CartItem(User user, Product product, Integer quantity) {
         this.user = user;
         this.product = product;
         this.quantity = quantity;
+        this.unitPrice = product.getPrice(); // Giá tại thời điểm thêm vào giỏ
     }
 
     // Getters & Setters
@@ -43,14 +44,13 @@ public class CartItem {
     public Product getProduct() { return product; }
     public void setProduct(Product product) { this.product = product; }
 
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public Integer getQuantity() { return quantity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public BigDecimal getUnitPrice() { return unitPrice; }
+    public void setUnitPrice(BigDecimal unitPrice) { this.unitPrice = unitPrice; }
 
-    // Tính thành tiền
     public BigDecimal getSubtotal() {
-        return product.getPrice().multiply(BigDecimal.valueOf(quantity));
+        return unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
 }

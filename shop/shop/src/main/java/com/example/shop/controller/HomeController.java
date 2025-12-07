@@ -1,9 +1,12 @@
 package com.example.shop.controller;
 
+import com.example.shop.model.CartItem;
 import com.example.shop.model.Product;
 import com.example.shop.model.User;
+import com.example.shop.service.CartService;
 import com.example.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +19,20 @@ public class HomeController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private CartService cartService;
     @RequestMapping("/")
-    public String home(Model model) {
+    public String home(Authentication auth, Model model) {
         List<Product> featuredProducts = productService.getAllProducts();
         model.addAttribute("products", featuredProducts); // ← PHẢI CÓ DÒNG NÀY
+        if (auth != null && auth.isAuthenticated()) {
+            String email = auth.getName();
+            List<CartItem> cartItems = cartService.getCartItems(email);
+            int itemCount = cartItems.stream().mapToInt(CartItem::getQuantity).sum();
+            model.addAttribute("cartItemCount", itemCount);
+        } else {
+            model.addAttribute("cartItemCount", 0);
+        }
         return "home";
     }
 

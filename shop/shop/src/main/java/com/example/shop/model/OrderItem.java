@@ -22,7 +22,7 @@ public class OrderItem {
     @Column(nullable = false)
     private Integer quantity;
 
-    @Column(name = "unit_price", nullable = false, precision = 19, scale = 2)
+    @Column(name = "unit_price", precision = 19, scale = 2)
     private BigDecimal unitPrice;
 
     // Constructors

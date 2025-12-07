@@ -1,15 +1,13 @@
 package com.example.shop.controller;
 
-import com.example.shop.model.CartItem;
 import com.example.shop.service.CartService;
+import com.example.shop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -28,13 +26,12 @@ public class CartController {
         }
 
         String email = auth.getName();
-        List<CartItem> cartItems = cartService.getCartItems(email);
-        model.addAttribute("cartItems", cartItems);
+        model.addAttribute("cartItems", cartService.getCartItems(email));
         return "cart";
     }
 
     /**
-     * Thêm sản phẩm vào giỏ hàng
+     * Thêm sản phẩm vào giỏ
      */
     @PostMapping("/add")
     public String addToCart(
@@ -55,14 +52,14 @@ public class CartController {
             redirectAttrs.addFlashAttribute("error", e.getMessage());
         }
 
-        return "redirect:/"; // Quay về trang chủ sau khi thêm
+        return "redirect:/"; // Quay về trang chủ
     }
 
     /**
      * Cập nhật số lượng sản phẩm trong giỏ
      */
     @PostMapping("/update")
-    public String updateCart(
+    public String updateCartItem(
             @RequestParam Long productId,
             @RequestParam int quantity,
             Authentication auth
@@ -76,11 +73,32 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @Autowired
+    private OrderService orderService;
+
+
+    @PostMapping("/checkout")
+    public String checkout(Authentication auth, RedirectAttributes redirectAttrs) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
+        String email = auth.getName();
+        try {
+            orderService.createOrderFromCart(email);
+            redirectAttrs.addFlashAttribute("message", "Đặt hàng thành công!");
+        } catch (RuntimeException e) {
+            redirectAttrs.addFlashAttribute("error", e.getMessage());
+        }
+
+        return "redirect:/cart";
+    }
+
     /**
      * Xóa sản phẩm khỏi giỏ
      */
     @PostMapping("/remove")
-    public String removeFromCart(
+    public String removeCartItem(
             @RequestParam Long productId,
             Authentication auth
     ) {

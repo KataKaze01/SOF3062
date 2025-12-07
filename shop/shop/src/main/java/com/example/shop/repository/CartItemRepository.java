@@ -5,13 +5,11 @@ import com.example.shop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
-    java.util.List<CartItem> findByUser(User user);
-
-    Optional<CartItem> findByUserAndProduct_Id(User user, Long productId);
-
+    List<CartItem> findByUser(User user);
     void deleteByUserAndProduct_Id(User user, Long productId);
+    CartItem findByUserAndProduct_Id(User user, Long productId);
 }

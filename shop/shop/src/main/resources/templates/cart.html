@@ -21,7 +21,14 @@
 
 <!-- Main Content -->
 <main class="container mt-4">
-    <h4 class="text-danger mb-4"><i class="fas fa-shopping-cart me-2"></i> GIỎ HÀNG CỦA BẠN</h4>
+    <h4 class="text-danger mb-4">GIỎ HÀNG CỦA BẠN</h4>
+
+    <div th:if="${message}" class="alert alert-success">
+        <span th:text="${message}">Thông báo</span>
+    </div>
+    <div th:if="${error}" class="alert alert-danger">
+        <span th:text="${error}">Lỗi</span>
+    </div>
 
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -29,7 +36,7 @@
             <tr>
                 <th>Hình ảnh</th>
                 <th>Tên sản phẩm</th>
-                <th>Đơn giá</th>
+                <th>Giá</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
                 <th>Thao tác</th>
@@ -37,11 +44,9 @@
             </thead>
             <tbody>
             <tr th:each="item : ${cartItems}">
-                <td>
-                    <img th:src="@{${item.product.imageUrl}}" width="60" alt="Sản phẩm">
-                </td>
+                <td><img th:src="@{${item.product.imageUrl}}" width="60" alt="Sản phẩm"></td>
                 <td th:text="${item.product.name}">Tên sản phẩm</td>
-                <td th:text="${#numbers.formatCurrency(item.product.price)}">Giá</td>
+                <td th:text="${#numbers.formatCurrency(item.unitPrice)}">Giá</td>
                 <td>
                     <form th:action="@{/cart/update}" method="post" class="d-flex align-items-center">
                         <input type="hidden" name="productId" th:value="${item.product.id}">
@@ -69,9 +74,14 @@
             <strong>Tổng tiền:</strong>
             <span class="text-danger fw-bold fs-5" th:text="${#aggregates.sum(cartItems.![subtotal])} ? ${#numbers.formatCurrency(#aggregates.sum(cartItems.![subtotal]))} : '0đ'">0đ</span>
         </div>
-        <div>
-            <a th:href="@{/}" class="btn btn-outline-secondary me-2">Tiếp tục mua hàng</a>
-            <a href="#" class="btn btn-success">TIẾN HÀNH THANH TOÁN</a>
+        <div class="d-flex justify-content-between align-items-center mt-4" th:if="${not #lists.isEmpty(cartItems)}">
+            <div>
+                <strong>Tổng tiền:</strong> <span class="text-danger fw-bold fs-5" th:text="${#aggregates.sum(cartItems.![subtotal]) ? #numbers.formatCurrency(#aggregates.sum(cartItems.![subtotal])) : '0đ'}">0đ</span>
+            </div>
+            <div>
+                <a th:href="@{/}" class="btn btn-outline-secondary me-2">Tiếp tục mua hàng</a>
+                <a th:href="@{/checkout}" class="btn btn-success">TIẾN HÀNH THANH TOÁN</a>
+            </div>
         </div>
     </div>
 </main>

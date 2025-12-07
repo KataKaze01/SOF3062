@@ -1,15 +1,18 @@
 package com.example.shop.service;
 
+import com.example.shop.model.CartItem;
 import com.example.shop.model.Order;
 import com.example.shop.model.OrderItem;
+import com.example.shop.model.Product;
 import com.example.shop.model.User;
+import com.example.shop.repository.OrderItemRepository;
 import com.example.shop.repository.OrderRepository;
-import com.example.shop.repository.ProductRepository;
 import com.example.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -20,27 +23,61 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
+    private OrderItemRepository orderItemRepository;
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     private ProductService productService;
 
-
-
-    public List<Order> getAllOrders() {
-        return orderRepository.findAll();
-    }
-
-    @Transactional
-    public void saveOrder(Order order) {
-        // Lưu đơn hàng
-        Order savedOrder = orderRepository.save(order);
-
-        // Với mỗi sản phẩm trong giỏ hàng → giảm số lượng tồn kho
-        for (OrderItem item : order.getOrderItems()) {
-            productService.decreaseStock(item.getProduct().getId(), item.getQuantity());
+    /**
+     * Tạo đơn hàng từ giỏ hàng
+     */
+    public void createOrderFromCart(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("Người dùng không tồn tại!");
         }
+
+        List<CartItem> cartItems = cartService.getCartItems(email);
+        if (cartItems.isEmpty()) {
+            throw new RuntimeException("Giỏ hàng trống!");
+        }
+
+        // Tạo đơn hàng mới
+        Order order = new Order(user);
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (CartItem cartItem : cartItems) {
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            orderItem.setProduct(cartItem.getProduct());
+            orderItem.setQuantity(cartItem.getQuantity());
+            orderItem.setUnitPrice(cartItem.getUnitPrice());
+
+            order.getOrderItems().add(orderItem);
+
+            // Cộng dồn tổng tiền
+            total = total.add(orderItem.getSubtotal());
+
+            // Giảm số lượng tồn kho
+            productService.decreaseStock(cartItem.getProduct().getId(), cartItem.getQuantity());
+        }
+
+        order.setTotalAmount(total);
+        orderRepository.save(order);
+
+        // Xóa giỏ hàng sau khi tạo đơn
+        cartService.clearCart(email);
     }
+
+    /**
+     * Lấy tất cả đơn hàng của người dùng
+     */
     public List<Order> getOrdersByUser(String email) {
         User user = userRepository.findByEmail(email);
         if (user == null) {
@@ -49,11 +86,10 @@ public class OrderService {
         return orderRepository.findByUser(user);
     }
 
-    public Order findById(Long id) {
-        return orderRepository.findById(id).orElse(null);
-    }
-
-    public void save(Order order) {
-        orderRepository.save(order);
+    /**
+     * Lấy tất cả đơn hàng (dành cho admin)
+     */
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 }

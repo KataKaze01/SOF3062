@@ -28,7 +28,7 @@ public class Order {
     private BigDecimal totalAmount;
 
     @Column(nullable = false)
-    private String status = "Pending"; // Pending, Confirmed, Shipped, Delivered, Cancelled
+    private String status = "Đang xử lý";
 
     // Constructors
     public Order() {}
