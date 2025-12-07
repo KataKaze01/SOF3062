@@ -23,12 +23,49 @@ public class ProductService {
     }
 
     /**
+     * Giảm số lượng tồn kho sau khi đặt hàng
+     */
+    @Transactional
+    public void decreaseStock(Long productId, int quantity) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Sản phẩm không tồn tại!"));
+
+        if (product.getStock() < quantity) {
+            throw new RuntimeException("Số lượng tồn kho không đủ!");
+        }
+
+        product.setStock(product.getStock() - quantity);
+        productRepository.save(product);
+    }
+
+    /**
+     * Cập nhật số lượng tồn kho sản phẩm (dành cho admin)
+     */
+    public void updateStock(Long productId, Integer newStock) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Sản phẩm không tồn tại!"));
+
+        product.setStock(newStock);
+        productRepository.save(product);
+    }
+    /**
      * Lấy tất cả sản phẩm
      */
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
+    /**
+     * Cập nhật sản phẩm
+     */
+    public void update(Product product) {
+        // Kiểm tra xem sản phẩm có tồn tại không
+        if (productRepository.existsById(product.getId())) {
+            productRepository.save(product);
+        } else {
+            throw new RuntimeException("Sản phẩm không tồn tại!");
+        }
+    }
     /**
      * Lấy sản phẩm theo ID
      */

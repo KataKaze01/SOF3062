@@ -1,15 +1,15 @@
 package com.example.shop.service;
 
-import com.example.shop.model.CartItem;
-import com.example.shop.model.Product;
-import com.example.shop.model.User;
+import com.example.shop.model.*;
 import com.example.shop.repository.CartItemRepository;
+import com.example.shop.repository.OrderRepository;
 import com.example.shop.repository.ProductRepository;
 import com.example.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +25,12 @@ public class CartService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductService productService;
 
     /**
      * Thêm sản phẩm vào giỏ hàng
@@ -53,6 +59,46 @@ public class CartService {
             CartItem newItem = new CartItem(user, product, quantity);
             cartItemRepository.save(newItem);
         }
+    }
+
+    @Transactional
+    public void checkout(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("Người dùng không tồn tại!");
+        }
+
+        // Lấy tất cả sản phẩm trong giỏ hàng
+        List<CartItem> cartItems = cartItemRepository.findByUser(user);
+        if (cartItems.isEmpty()) {
+            throw new RuntimeException("Giỏ hàng trống!");
+        }
+
+        // Tạo đơn hàng mới
+        Order order = new Order(user);
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (CartItem cartItem : cartItems) {
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            orderItem.setProduct(cartItem.getProduct());
+            orderItem.setQuantity(cartItem.getQuantity());
+            orderItem.setUnitPrice(cartItem.getProduct().getPrice());
+            order.getOrderItems().add(orderItem);
+
+            total = total.add(cartItem.getSubtotal());
+        }
+
+        order.setTotalAmount(total);
+        orderRepository.save(order);
+
+        // Gọi giảm số lượng tồn kho
+        for (OrderItem item : order.getOrderItems()) {
+            productService.decreaseStock(item.getProduct().getId(), item.getQuantity());
+        }
+
+        // Xóa giỏ hàng sau khi thanh toán
+        cartItemRepository.deleteAll(cartItems);
     }
 
     /**

@@ -1,4 +1,3 @@
-// src/main/java/com/example/shop/repository/OrderRepository.java
 package com.example.shop.repository;
 
 import com.example.shop.model.Order;

@@ -35,6 +35,7 @@ public class SecurityConfig {
                                 "/login", "/register", "/forgot-password", "/reset-password"
                         ).permitAll()
                         .requestMatchers("/profile", "/my-orders", "/cart", "/checkout").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN") // ← THÊM DÒNG NÀY
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

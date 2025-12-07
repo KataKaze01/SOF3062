@@ -7,6 +7,8 @@ import com.example.shop.repository.PasswordResetTokenRepository;
 import com.example.shop.repository.RoleRepository;
 import com.example.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -151,6 +153,70 @@ public class UserService {
 
         return "success";
     }
+
+    /**
+     * Tạo khách hàng mới từ admin
+     */
+    @Transactional
+    public void createCustomer(String name, String email, String password, String phone, String address, Long roleId) {
+        if (userRepository.existsByEmail(email)) {
+            throw new RuntimeException("Email đã tồn tại!");
+        }
+
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(password)); // Mã hóa mật khẩu
+        user.setPhone(phone);
+        user.setAddress(address);
+
+        // Gán vai trò
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new RuntimeException("Vai trò không tồn tại!"));
+        user.setRoles(Collections.singleton(role));
+
+        userRepository.save(user);
+    }
+
+    /**
+     * Cập nhật thông tin khách hàng
+     */
+    @Transactional
+    public void updateCustomer(Long id, String name, String phone, String address, Long roleId) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Người dùng không tồn tại!"));
+
+        user.setName(name);
+        user.setPhone(phone);
+        user.setAddress(address);
+
+        // Cập nhật vai trò
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new RuntimeException("Vai trò không tồn tại!"));
+        user.setRoles(Collections.singleton(role));
+
+        userRepository.save(user);
+    }
+
+    /**
+     * Xóa khách hàng
+     */
+    @Transactional
+    public void deleteCustomer(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Người dùng không tồn tại!"));
+
+        // Không xóa tài khoản admin hiện tại
+        if (user.getRoles().stream().anyMatch(r -> "ROLE_ADMIN".equals(r.getName()))) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            if (auth != null && auth.getName().equals(user.getEmail())) {
+                throw new RuntimeException("Bạn không thể xóa tài khoản admin hiện tại!");
+            }
+        }
+
+        userRepository.deleteById(id);
+    }
+
 
     /**
      * Lấy thông tin người dùng theo email

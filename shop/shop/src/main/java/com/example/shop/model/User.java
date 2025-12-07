@@ -1,4 +1,3 @@
-// src/main/java/com/example/shop/model/User.java
 package com.example.shop.model;
 
 import jakarta.persistence.*;
@@ -6,9 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(name = "users")
 public class User {
 
     @Id
@@ -18,7 +15,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -26,17 +23,10 @@ public class User {
 
     private String phone;
     private String address;
+
+    // ✅ THÊM TRƯỜNG resetToken
     @Column(name = "reset_token")
     private String resetToken;
-
-    @Transient
-    private String currentPassword; // Mật khẩu hiện tại
-
-    @Transient
-    private String newPassword; // Mật khẩu mới
-
-    @Transient
-    private String confirmNewPassword;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -74,33 +64,10 @@ public class User {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
+    // ✅ GETTER & SETTER CHO resetToken
+    public String getResetToken() { return resetToken; }
+    public void setResetToken(String resetToken) { this.resetToken = resetToken; }
+
     public Set<Role> getRoles() { return roles; }
     public void setRoles(Set<Role> roles) { this.roles = roles; }
-    public String getResetToken() {
-        return resetToken;
-    }
-    public void setResetToken(String resetToken) {
-        this.resetToken = resetToken;
-    }
-
-    public String getCurrentPassword() {
-        return currentPassword;
-    }
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
-
-    public String getConfirmNewPassword() {
-        return confirmNewPassword;
-    }
-    public void setConfirmNewPassword(String confirmNewPassword) {
-        this.confirmNewPassword = confirmNewPassword;
-    }
 }

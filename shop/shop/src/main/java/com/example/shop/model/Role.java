@@ -1,4 +1,3 @@
-// src/main/java/com/example/shop/model/Role.java
 package com.example.shop.model;
 
 import jakarta.persistence.*;
@@ -12,7 +11,7 @@ public class Role {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String name; // "ROLE_USER", "ROLE_ADMIN"
+    private String name; // e.g. "ROLE_USER", "ROLE_ADMIN"
 
     public Role() {}
 

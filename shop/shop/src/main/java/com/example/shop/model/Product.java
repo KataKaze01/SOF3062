@@ -1,4 +1,3 @@
-// src/main/java/com/example/shop/model/Product.java
 package com.example.shop.model;
 
 import jakarta.persistence.*;
@@ -15,23 +14,30 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "image_url")
     private String imageUrl;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal price;
 
+    @Column(nullable = false)
     private Integer stock = 0;
 
-    @Column(name = "category")
-    private String category; // "Sách Trong Nước", "Đồ Chơi", v.v.
+    @Column(nullable = false)
+    private String category;
 
     // Constructors
     public Product() {}
 
-    public Product(String name, BigDecimal price) {
+    public Product(String name, BigDecimal price, String imageUrl, String category, Integer stock) {
         this.name = name;
         this.price = price;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.stock = stock;
     }
 
     // Getters & Setters

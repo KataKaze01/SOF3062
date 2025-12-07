@@ -4,7 +4,6 @@ import com.example.shop.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository // ← Có hoặc không cũng được (JpaRepository đã là Bean)
+@Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    // Có thể thêm method tùy chỉnh nếu cần
 }

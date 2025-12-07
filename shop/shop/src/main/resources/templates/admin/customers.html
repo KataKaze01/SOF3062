@@ -1,60 +1,236 @@
-<!-- src/main/resources/templates/admin-customers.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>admin customners</title>
+    <title>Quản lý khách hàng - Fahasa Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<div class="main-content flex-grow-1">
-    <h4 class="mb-4"><i class="fas fa-users me-2"></i> Quản lý khách hàng</h4>
+<body>
 
-    <div class="d-flex justify-content-between mb-3">
-        <button class="btn btn-success"><i class="fas fa-plus me-1"></i> Thêm khách hàng</button>
-        <input type="text" class="form-control w-25" placeholder="Tìm kiếm theo tên/email...">
+<!-- Header -->
+<header class="bg-white shadow-sm">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <a th:href="@{/admin}" class="navbar-brand">
+                <img th:src="@{/images/fahasa-logo.png}" alt="Fahasa.com" width="180" height="auto">
+            </a>
+            <div class="dropdown">
+                <a class="text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-shield me-2"></i> Xin chào, <strong th:text="${#authentication.name}">Admin</strong>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/profile}"><i class="fas fa-user me-2"></i> Hồ sơ cá nhân</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+</header>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead class="table-light">
-            <tr>
-                <th>ID</th>
-                <th>Tên</th>
-                <th>Email</th>
-                <th>Số điện thoại</th>
-                <th>Địa chỉ</th>
-                <th>Vai trò</th>
-                <th>Hành động</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>201</td>
-                <td>Nguyễn Văn A</td>
-                <td>vana@example.com</td>
-                <td>0901234567</td>
-                <td>Hồ Chí Minh</td>
-                <td><span class="badge bg-info">Khách hàng</span></td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>202</td>
-                <td>Trần Thị B</td>
-                <td>trantb@example.com</td>
-                <td>0987654321</td>
-                <td>Hà Nội</td>
-                <td><span class="badge bg-info">Khách hàng</span></td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<!-- Main Content -->
+<main class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="list-group">
+                <a th:href="@{/admin}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                </a>
+                <a th:href="@{/admin/products}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-book me-2"></i> Quản lý sản phẩm
+                </a>
+                <a th:href="@{/admin/customers}" class="list-group-item list-group-item-action active">
+                    <i class="fas fa-users me-2"></i> Quản lý khách hàng
+                </a>
+                <a th:href="@{/admin/orders}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-receipt me-2"></i> Quản lý đơn hàng
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4><i class="fas fa-users me-2"></i> Quản lý khách hàng</h4>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+                    <i class="fas fa-plus me-2"></i> Thêm khách hàng
+                </button>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Vai trò</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}">1</td>
+                        <td th:text="${user.name}">Nguyễn Văn A</td>
+                        <td th:text="${user.email}">vana@example.com</td>
+                        <td th:text="${user.phone ?: 'Chưa có'}">0900000000</td>
+                        <td th:text="${user.address ?: 'Chưa có'}">TP. HCM</td>
+                        <td>
+                            <span class="badge bg-info" th:each="role : ${user.roles}" th:text="${role.name}">ROLE_USER</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary me-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editCustomerModal"
+                                    th:data-id="${user.id}"
+                                    th:data-name="${user.name}"
+                                    th:data-email="${user.email}"
+                                    th:data-phone="${user.phone}"
+                                    th:data-address="${user.address}"
+                                    th:data-role="${user.roles.iterator().next()?.name}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <a th:href="@{/admin/customers/delete/{id}(id=${user.id})}"
+                               class="btn btn-sm btn-outline-danger"
+                               onclick="return confirm('Bạn có chắc muốn xóa người dùng này?')">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal Thêm khách hàng -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="addCustomerModalLabel">Thêm khách hàng mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/admin/customers/add}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nameAdd" class="form-label">Họ và tên</label>
+                        <input type="text" name="name" class="form-control" id="nameAdd" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailAdd" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="emailAdd" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="passwordAdd" class="form-label">Mật khẩu</label>
+                        <input type="password" name="password" class="form-control" id="passwordAdd" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneAdd" class="form-label">Số điện thoại</label>
+                        <input type="text" name="phone" class="form-control" id="phoneAdd">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addressAdd" class="form-label">Địa chỉ</label>
+                        <input type="text" name="address" class="form-control" id="addressAdd">
+                    </div>
+                    <div class="mb-3">
+                        <label for="roleAdd" class="form-label">Vai trò</label>
+                        <select name="roleId" class="form-select" id="roleAdd" required>
+                            <option value="1">ROLE_USER</option>
+                            <option value="2">ROLE_ADMIN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-success">Tạo tài khoản</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+<!-- Modal Sửa khách hàng -->
+<div class="modal fade" id="editCustomerModal" tabindex="-1" aria-labelledby="editCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editCustomerModalLabel">Sửa thông tin khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/admin/customers/update}" method="post">
+                <input type="hidden" name="id" id="editId">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Họ và tên</label>
+                        <input type="text" name="name" class="form-control" id="editName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="editEmail" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPhone" class="form-label">Số điện thoại</label>
+                        <input type="text" name="phone" class="form-control" id="editPhone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editAddress" class="form-label">Địa chỉ</label>
+                        <input type="text" name="address" class="form-control" id="editAddress">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editRole" class="form-label">Vai trò</label>
+                        <select name="roleId" class="form-select" id="editRole" required>
+                            <option value="1">ROLE_USER</option>
+                            <option value="2">ROLE_ADMIN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-3 mt-5">
+    <p>&copy; 2025 Fahasa Admin</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Load thông tin khách hàng vào modal sửa
+    document.querySelectorAll('[data-bs-target="#editCustomerModal"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const userId = this.getAttribute('data-id');
+            const userName = this.getAttribute('data-name');
+            const userEmail = this.getAttribute('data-email');
+            const userPhone = this.getAttribute('data-phone') || '';
+            const userAddress = this.getAttribute('data-address') || '';
+            const userRole = this.getAttribute('data-role') || 'ROLE_USER';
+
+            document.getElementById('editId').value = userId;
+            document.getElementById('editName').value = userName;
+            document.getElementById('editEmail').value = userEmail;
+            document.getElementById('editPhone').value = userPhone;
+            document.getElementById('editAddress').value = userAddress;
+
+            const roleSelect = document.getElementById('editRole');
+            if (userRole === 'ROLE_ADMIN') {
+                roleSelect.value = '2';
+            } else {
+                roleSelect.value = '1';
+            }
+        });
+    });
+</script>
+</body>
+</html>
