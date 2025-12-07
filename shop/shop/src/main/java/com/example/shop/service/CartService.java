@@ -33,8 +33,6 @@ public class CartService {
      * Thêm sản phẩm vào giỏ hàng
      */
     public void addProductToCart(String email, Long productId, int quantity) {
-        System.out.println("Adding product ID: " + productId + " for user: " + email); // ← LOG THÊM VÀO ĐÂY
-
         User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new RuntimeException("Người dùng không tồn tại!");
@@ -43,12 +41,15 @@ public class CartService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Sản phẩm không tồn tại!"));
 
+        // Kiểm tra xem sản phẩm đã có trong giỏ chưa
         Optional<CartItem> existingItemOpt = cartItemRepository.findByUserAndProduct_Id(user, productId);
         if (existingItemOpt.isPresent()) {
+            // Nếu có rồi thì cộng dồn số lượng
             CartItem existingItem = existingItemOpt.get();
             existingItem.setQuantity(existingItem.getQuantity() + quantity);
             cartItemRepository.save(existingItem);
         } else {
+            // Nếu chưa có thì tạo mới
             CartItem newItem = new CartItem(user, product, quantity);
             cartItemRepository.save(newItem);
         }

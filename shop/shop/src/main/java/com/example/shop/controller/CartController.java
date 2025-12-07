@@ -1,13 +1,15 @@
 package com.example.shop.controller;
 
+import com.example.shop.model.CartItem;
 import com.example.shop.service.CartService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -17,25 +19,29 @@ public class CartController {
     private CartService cartService;
 
     /**
-     * Hiển thị giỏ hàng
+     * Hiển thị trang giỏ hàng
      */
     @GetMapping
     public String viewCart(Authentication auth, Model model) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
         String email = auth.getName();
-        model.addAttribute("cartItems", cartService.getCartItems(email));
+        List<CartItem> cartItems = cartService.getCartItems(email);
+        model.addAttribute("cartItems", cartItems);
         return "cart";
     }
 
     /**
-     * Thêm sản phẩm vào giỏ
+     * Thêm sản phẩm vào giỏ hàng
      */
-    @PostMapping("/cart/add")
+    @PostMapping("/add")
     public String addToCart(
             @RequestParam Long productId,
             @RequestParam(defaultValue = "1") int quantity,
             Authentication auth,
-            RedirectAttributes redirectAttrs,
-            HttpServletRequest request // ← THÊM DÒNG NÀY
+            RedirectAttributes redirectAttrs
     ) {
         if (auth == null || !auth.isAuthenticated()) {
             return "redirect:/login";
@@ -49,20 +55,22 @@ public class CartController {
             redirectAttrs.addFlashAttribute("error", e.getMessage());
         }
 
-        // Quay lại trang trước đó
-        String referer = request.getHeader("Referer");
-        return "redirect:" + (referer != null ? referer : "/");
+        return "redirect:/"; // Quay về trang chủ sau khi thêm
     }
 
     /**
      * Cập nhật số lượng sản phẩm trong giỏ
      */
     @PostMapping("/update")
-    public String updateCartItem(
+    public String updateCart(
             @RequestParam Long productId,
             @RequestParam int quantity,
             Authentication auth
     ) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
         String email = auth.getName();
         cartService.updateCartItemQuantity(email, productId, quantity);
         return "redirect:/cart";
@@ -72,10 +80,14 @@ public class CartController {
      * Xóa sản phẩm khỏi giỏ
      */
     @PostMapping("/remove")
-    public String removeCartItem(
+    public String removeFromCart(
             @RequestParam Long productId,
             Authentication auth
     ) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
         String email = auth.getName();
         cartService.removeProductFromCart(email, productId);
         return "redirect:/cart";

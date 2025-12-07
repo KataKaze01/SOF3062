@@ -19,8 +19,7 @@ public class ProductService {
      * Lấy danh sách sản phẩm nổi bật
      */
     public List<Product> getFeaturedProducts() {
-        // Có thể thêm logic để lấy sản phẩm nổi bật
-        return productRepository.findAll();
+        return productRepository.findAll(); // hoặc bạn có thể lọc theo điều kiện
     }
 
     /**
@@ -43,6 +42,8 @@ public class ProductService {
     public void save(Product product) {
         productRepository.save(product);
     }
+
+
     /**
      * Lấy tất cả sản phẩm
      */

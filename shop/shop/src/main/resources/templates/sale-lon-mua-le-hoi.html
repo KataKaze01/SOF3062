@@ -37,7 +37,16 @@
                     </div>
                     <del class="text-muted">849.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -52,7 +61,16 @@
                     </div>
                     <del class="text-muted">269.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -67,7 +85,16 @@
                     </div>
                     <del class="text-muted">329.000đ</del>
                     <p class="text-success mt-2">Đã bán 14</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -82,7 +109,16 @@
                     </div>
                     <del class="text-muted">125.000đ</del>
                     <p class="text-success mt-2">Đã bán 11</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -97,7 +133,16 @@
                     </div>
                     <del class="text-muted">419.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -116,7 +161,16 @@
                     </div>
                     <del class="text-muted">-</del>
                     <p class="text-success mt-2">Đã bán 163</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -131,7 +185,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -146,7 +209,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -161,7 +233,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -176,7 +257,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -196,7 +286,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 16</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -211,7 +310,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 2</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -226,7 +334,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -241,7 +358,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 8</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -256,7 +382,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -276,7 +411,16 @@
                     </div>
                     <del class="text-muted">590.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -291,7 +435,16 @@
                     </div>
                     <del class="text-muted">590.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -306,7 +459,16 @@
                     </div>
                     <del class="text-muted">275.000đ</del>
                     <p class="text-success mt-2">Đã bán 15</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -321,7 +483,16 @@
                     </div>
                     <del class="text-muted">260.000đ</del>
                     <p class="text-success mt-2">Đã bán 20</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -336,7 +507,16 @@
                     </div>
                     <del class="text-muted">79.000đ</del>
                     <p class="text-success mt-2">Đã bán 2</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -356,7 +536,16 @@
                     </div>
                     <del class="text-muted">189.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -371,7 +560,16 @@
                     </div>
                     <del class="text-muted">189.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -386,7 +584,16 @@
                     </div>
                     <del class="text-muted">189.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -401,7 +608,16 @@
                     </div>
                     <del class="text-muted">189.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -416,7 +632,16 @@
                     </div>
                     <del class="text-muted">189.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -436,7 +661,16 @@
                     </div>
                     <del class="text-muted">985.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -451,7 +685,16 @@
                     </div>
                     <del class="text-muted">985.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -466,7 +709,16 @@
                     </div>
                     <del class="text-muted">880.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -481,7 +733,16 @@
                     </div>
                     <del class="text-muted">880.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -496,7 +757,16 @@
                     </div>
                     <del class="text-muted">280.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -516,7 +786,16 @@
                     </div>
                     <del class="text-muted">16.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -531,7 +810,16 @@
                     </div>
                     <del class="text-muted">59.000đ</del>
                     <p class="text-success mt-2">Đã bán 4</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -546,7 +834,16 @@
                     </div>
                     <del class="text-muted">110.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -561,7 +858,16 @@
                     </div>
                     <del class="text-muted">39.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -576,7 +882,16 @@
                     </div>
                     <del class="text-muted">89.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -596,7 +911,16 @@
                     </div>
                     <del class="text-muted">49.000đ</del>
                     <p class="text-success mt-2">Đã bán 4</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -611,7 +935,16 @@
                     </div>
                     <del class="text-muted">49.000đ</del>
                     <p class="text-success mt-2">Đã bán 3</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -626,7 +959,16 @@
                     </div>
                     <del class="text-muted">300.000đ</del>
                     <p class="text-success mt-2">Đã bán 4</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -641,7 +983,16 @@
                     </div>
                     <del class="text-muted">49.000đ</del>
                     <p class="text-success mt-2">Đã bán 5</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -656,7 +1007,16 @@
                     </div>
                     <del class="text-muted">69.000đ</del>
                     <p class="text-success mt-2">Đã bán 7</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -676,7 +1036,16 @@
                     </div>
                     <del class="text-muted">329.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -691,7 +1060,16 @@
                     </div>
                     <del class="text-muted">110.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -706,7 +1084,16 @@
                     </div>
                     <del class="text-muted">110.000đ</del>
                     <p class="text-success mt-2">Đã bán 2</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -721,7 +1108,16 @@
                     </div>
                     <del class="text-muted">61.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -736,7 +1132,16 @@
                     </div>
                     <del class="text-muted">299.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                           <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -756,7 +1161,16 @@
                     </div>
                     <del class="text-muted">199.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -771,7 +1185,16 @@
                     </div>
                     <del class="text-muted">94.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -786,7 +1209,16 @@
                     </div>
                     <del class="text-muted">94.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -801,7 +1233,16 @@
                     </div>
                     <del class="text-muted">199.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -816,7 +1257,16 @@
                     </div>
                     <del class="text-muted">199.000đ</del>
                     <p class="text-success mt-2">Đã bán 1</p>
-                    <button class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                    <th:block th:if="${#authentication?.isAuthenticated()}">
+                        <form th:action="@{/cart/add}" method="post" class="d-flex">
+                            <input type="hidden" name="productId" th:value="${product?.id ?: 0}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</button>
+                        </form>
+                    </th:block>
+                    <th:block th:unless="${#authentication?.isAuthenticated()}">
+                        <a th:href="@{/login}" class="btn btn-outline-danger mt-auto">Thêm giỏ hàng</a>
+                    </th:block>
                 </div>
             </div>
         </div>

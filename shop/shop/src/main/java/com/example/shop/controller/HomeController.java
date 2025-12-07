@@ -18,11 +18,8 @@ public class HomeController {
     private ProductService productService;
     @RequestMapping("/")
     public String home(Model model) {
-        // Truyền sản phẩm vào model (giả sử bạn có ProductService)
-        List<Product> featuredProducts = productService.getFeaturedProducts();
-        model.addAttribute("products", featuredProducts);
-
-        // Các dòng khác
+        List<Product> featuredProducts = productService.getAllProducts();
+        model.addAttribute("products", featuredProducts); // ← PHẢI CÓ DÒNG NÀY
         return "home";
     }
 
