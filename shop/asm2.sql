@@ -168,3 +168,74 @@ ALTER TABLE users
 ADD reset_token NVARCHAR(255);
 
 SELECT * FROM cart_items;
+
+-- Tạo bảng roles
+CREATE TABLE roles (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(50) UNIQUE NOT NULL
+);
+
+-- Tạo bảng users
+CREATE TABLE users (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(255) NOT NULL,
+    email NVARCHAR(255) UNIQUE NOT NULL,
+    password NVARCHAR(255) NOT NULL,
+    phone NVARCHAR(20),
+    address NVARCHAR(500),
+    created_at DATETIME2 DEFAULT GETDATE()
+);
+
+-- Tạo bảng user_roles (liên kết nhiều-nhiều)
+CREATE TABLE user_roles (
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE
+);
+
+-- Tạo bảng products
+CREATE TABLE products (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(500) NOT NULL,
+    description TEXT,
+    image_url NVARCHAR(500),
+    price DECIMAL(19,2) NOT NULL,
+    stock INT DEFAULT 0,
+    category NVARCHAR(255) NOT NULL
+);
+
+-- Tạo bảng orders
+CREATE TABLE orders (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    order_date DATETIME2 DEFAULT GETDATE(),
+    total_amount DECIMAL(19,2),
+    status NVARCHAR(50) DEFAULT N'Đang xử lý',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Tạo bảng order_items
+CREATE TABLE order_items (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    unit_price DECIMAL(19,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);go
+
+-- Thêm dữ liệu mẫu
+INSERT INTO roles (name) VALUES (N'ROLE_USER'), (N'ROLE_ADMIN');
+
+INSERT INTO users (name, email, password, phone, address) 
+VALUES (N'Admin Fahasa', N'admin@fahasa.com', N'admin123', N'0900000000', N'TP. HCM');
+
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 2); -- Gán ROLE_ADMIN cho admin
+
+INSERT INTO products (name, price, image_url, category, stock)
+VALUES 
+(N'Breath - Hơi Thở Nối Dài Sự Sống', 202500.00, '/images/book1.png', N'Sách Trong Nước', 50),
+(N'Con Quay Yoyo Ngọn Lửa Bùng Cháy', 424500.00, '/images/toy1.png', N'Đồ Chơi', 30);

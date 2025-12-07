@@ -23,8 +23,9 @@ public class HomeController {
     private CartService cartService;
     @RequestMapping("/")
     public String home(Authentication auth, Model model) {
-        List<Product> featuredProducts = productService.getAllProducts();
-        model.addAttribute("products", featuredProducts); // ← PHẢI CÓ DÒNG NÀY
+        List<Product> featuredProducts = productService.getFeaturedProducts();
+        model.addAttribute("products", featuredProducts);
+
         if (auth != null && auth.isAuthenticated()) {
             String email = auth.getName();
             List<CartItem> cartItems = cartService.getCartItems(email);
@@ -33,6 +34,7 @@ public class HomeController {
         } else {
             model.addAttribute("cartItemCount", 0);
         }
+
         return "home";
     }
 
