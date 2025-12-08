@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lab 6 - JWT Test</title>
+
+<!-- Axios CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+	<h1>Lab 6 - JWT + Security Test</h1>
+
+	<button onclick="login()">Login (Thay gmail)</button>
+	<button onclick="gotoUrl0()">/poly/url0 (Public)</button>
+	<button onclick="gotoUrl1()">/poly/url1 (Authenticated)</button>
+	<button onclick="gotoUrl2()">/poly/url2 (USER)</button>
+	<button onclick="gotoUrl3()">/poly/url3 (ADMIN)</button>
+	<button onclick="gotoUrl4()">/poly/url4 (USER, ADMIN)</button>
+
+	<pre id="output"
+		style="margin-top: 20px; font-size: 18px; color: blue;"></pre>
+
+	<script>
+let token = null;
+
+// IN RA KẾT QUẢ
+function show(data) {
+    document.getElementById("output").innerText = JSON.stringify(data, null, 4);
+}
+
+// LOGIN LẤY JWT
+function login() {
+    axios.post("http://localhost:8080/poly/login", {
+        username: "admin@gmail.com",
+        password: "123"
+    })
+    .then(resp => {
+        token = resp.data.token;
+        show(resp.data);
+        console.log("Token:", token);
+    })
+    .catch(err => show(err.response?.data || err));
+}
+
+// URL 0 - PUBLIC
+function gotoUrl0() {
+    axios.get("http://localhost:8080/poly/url0")
+        .then(resp => show(resp.data))
+        .catch(err => show(err.response?.data || err));
+}
+
+// URL 1 - Authenticated
+function gotoUrl1() {
+    axios.get("http://localhost:8080/poly/url1", {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(resp => show(resp.data))
+        .catch(err => show(err.response?.data || err));
+}
+
+// URL 2 - USER
+function gotoUrl2() {
+    axios.get("http://localhost:8080/poly/url2", {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(resp => show(resp.data))
+        .catch(err => show(err.response?.data || err));
+}
+
+// URL 3 - ADMIN
+function gotoUrl3() {
+    axios.get("http://localhost:8080/poly/url3", {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(resp => show(resp.data))
+        .catch(err => show(err.response?.data || err));
+}
+
+// URL 4 - ANY ROLE
+function gotoUrl4() {
+    axios.get("http://localhost:8080/poly/url4", {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(resp => show(resp.data))
+        .catch(err => show(err.response?.data || err));
+}
+</script>
+
+</body>
+</html>

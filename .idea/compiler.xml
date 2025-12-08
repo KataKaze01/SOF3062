@@ -10,16 +10,19 @@
         <module name="poly.demo" />
         <module name="shop" />
       </profile>
-      <profile name="Annotation profile for lab4_java6" enabled="true">
+      <profile name="Annotation profile for lab8_java6" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="lab4_java6" />
+        <module name="lab6_java6" />
+        <module name="lab6_java6 (1)" />
         <module name="lab1" />
         <module name="TS00727_java6_test" />
+        <module name="lab8_java6" />
+        <module name="lab4_java6" />
         <module name="TS00727_java6_test (1)" />
       </profile>
     </annotationProcessing>
@@ -46,6 +49,7 @@
       <module name="lab5_java6.main" options="-parameters" />
       <module name="lab5_java6.test" options="-parameters" />
       <module name="lab6_java6" options="-parameters" />
+      <module name="lab6_java6 (1)" options="-parameters" />
       <module name="lab6_java6.main" options="-parameters" />
       <module name="lab6_java6.test" options="-parameters" />
       <module name="lab7_java6" options="-parameters" />
