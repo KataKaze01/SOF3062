@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SOF3062", "SOF3062", "{676BCA7C-256D-788C-6D1C-345F77BF81D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dethithu", "dethithu", "{01B35374-B969-C63D-F79B-E495C48262A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{86D9FBDC-B437-503F-8CD5-205807158507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLySanPhamApi", "SOF3062\dethithu\backend\QuanLySanPhamApi\QuanLySanPhamApi.csproj", "{DC0E49D9-7122-90B0-EA8A-5F429921C489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC0E49D9-7122-90B0-EA8A-5F429921C489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0E49D9-7122-90B0-EA8A-5F429921C489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0E49D9-7122-90B0-EA8A-5F429921C489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0E49D9-7122-90B0-EA8A-5F429921C489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01B35374-B969-C63D-F79B-E495C48262A6} = {676BCA7C-256D-788C-6D1C-345F77BF81D0}
+		{86D9FBDC-B437-503F-8CD5-205807158507} = {01B35374-B969-C63D-F79B-E495C48262A6}
+		{DC0E49D9-7122-90B0-EA8A-5F429921C489} = {86D9FBDC-B437-503F-8CD5-205807158507}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C814E89-0DB0-41FF-9388-AF1BBD2CE78B}
+	EndGlobalSection
+EndGlobal

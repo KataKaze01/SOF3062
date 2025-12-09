@@ -8,7 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="poly.demo" />
+        <module name="backend" />
         <module name="shop" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="lab5_java6.main" />
       </profile>
       <profile name="Annotation profile for lab8_java6" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -17,12 +25,13 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="lab6_java6" />
         <module name="lab6_java6 (1)" />
         <module name="lab1" />
         <module name="TS00727_java6_test" />
+        <module name="lab6_java6 (2)" />
         <module name="lab8_java6" />
         <module name="lab4_java6" />
+        <module name="TS00727_java6_test (2)" />
         <module name="TS00727_java6_test (1)" />
       </profile>
     </annotationProcessing>
@@ -38,8 +47,10 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="TS00727_java6_test" options="-parameters" />
       <module name="TS00727_java6_test (1)" options="-parameters" />
+      <module name="TS00727_java6_test (2)" options="-parameters" />
       <module name="assignment-selling-website" options="-parameters" />
       <module name="assignment-selling-website (1)" options="-parameters" />
+      <module name="backend" options="-parameters" />
       <module name="lab1" options="-parameters" />
       <module name="lab2_java6" options="-parameters" />
       <module name="lab2_java6.main" options="-parameters" />
@@ -50,6 +61,7 @@
       <module name="lab5_java6.test" options="-parameters" />
       <module name="lab6_java6" options="-parameters" />
       <module name="lab6_java6 (1)" options="-parameters" />
+      <module name="lab6_java6 (2)" options="-parameters" />
       <module name="lab6_java6.main" options="-parameters" />
       <module name="lab6_java6.test" options="-parameters" />
       <module name="lab7_java6" options="-parameters" />
