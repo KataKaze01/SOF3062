@@ -72,16 +72,11 @@
     <div class="d-flex justify-content-between align-items-center mt-4" th:if="${not #lists.isEmpty(cartItems)}">
         <div>
             <strong>Tổng tiền:</strong>
-            <span class="text-danger fw-bold fs-5" th:text="${#aggregates.sum(cartItems.![subtotal])} ? ${#numbers.formatCurrency(#aggregates.sum(cartItems.![subtotal]))} : '0đ'">0đ</span>
+            <span class="text-danger fw-bold fs-5" th:text="${#numbers.formatCurrency(#aggregates.sum(cartItems.![subtotal]) ?: 0)}">0đ</span>
         </div>
-        <div class="d-flex justify-content-between align-items-center mt-4" th:if="${not #lists.isEmpty(cartItems)}">
-            <div>
-                <strong>Tổng tiền:</strong> <span class="text-danger fw-bold fs-5" th:text="${#aggregates.sum(cartItems.![subtotal]) ? #numbers.formatCurrency(#aggregates.sum(cartItems.![subtotal])) : '0đ'}">0đ</span>
-            </div>
-            <div>
-                <a th:href="@{/}" class="btn btn-outline-secondary me-2">Tiếp tục mua hàng</a>
-                <a th:href="@{/checkout}" class="btn btn-success">TIẾN HÀNH THANH TOÁN</a>
-            </div>
+        <div>
+            <a th:href="@{/}" class="btn btn-outline-secondary me-2">Tiếp tục mua hàng</a>
+            <a th:href="@{/checkout}" class="btn btn-success">TIẾN HÀNH THANH TOÁN</a>
         </div>
     </div>
 </main>

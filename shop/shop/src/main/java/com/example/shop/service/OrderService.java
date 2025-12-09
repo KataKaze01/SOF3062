@@ -57,15 +57,16 @@ public class OrderService {
             orderItem.setOrder(order);
             orderItem.setProduct(cartItem.getProduct());
             orderItem.setQuantity(cartItem.getQuantity());
-            orderItem.setUnitPrice(cartItem.getUnitPrice());
+
+            // Đảm bảo unitPrice không null
+            BigDecimal unitPrice = cartItem.getUnitPrice();
+            if (unitPrice == null) {
+                unitPrice = cartItem.getProduct().getPrice(); // Lấy từ sản phẩm
+            }
+            orderItem.setUnitPrice(unitPrice);
 
             order.getOrderItems().add(orderItem);
-
-            // Cộng dồn tổng tiền
             total = total.add(orderItem.getSubtotal());
-
-            // Giảm số lượng tồn kho
-            productService.decreaseStock(cartItem.getProduct().getId(), cartItem.getQuantity());
         }
 
         order.setTotalAmount(total);

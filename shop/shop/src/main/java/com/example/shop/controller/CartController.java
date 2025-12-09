@@ -1,13 +1,14 @@
 package com.example.shop.controller;
 
 import com.example.shop.service.CartService;
-import com.example.shop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -73,31 +74,13 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @Autowired
-    private OrderService orderService;
-
-
-    @PostMapping("/checkout")
-    public String checkout(Authentication auth, RedirectAttributes redirectAttrs) {
-        if (auth == null || !auth.isAuthenticated()) {
-            return "redirect:/login";
-        }
-
-        String email = auth.getName();
-        try {
-            orderService.createOrderFromCart(email);
-            redirectAttrs.addFlashAttribute("message", "Đặt hàng thành công!");
-        } catch (RuntimeException e) {
-            redirectAttrs.addFlashAttribute("error", e.getMessage());
-        }
-
-        return "redirect:/cart";
-    }
-
     /**
      * Xóa sản phẩm khỏi giỏ
      */
-    @PostMapping("/remove")
+    /**
+     * Xóa sản phẩm khỏi giỏ (cho phép GET)
+     */
+    @GetMapping("/remove")
     public String removeCartItem(
             @RequestParam Long productId,
             Authentication auth

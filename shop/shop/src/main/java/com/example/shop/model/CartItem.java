@@ -31,7 +31,7 @@ public class CartItem {
         this.user = user;
         this.product = product;
         this.quantity = quantity;
-        this.unitPrice = product.getPrice(); // Giá tại thời điểm thêm vào giỏ
+        this.unitPrice = product.getPrice(); // ← Đảm bảo luôn có giá
     }
 
     // Getters & Setters

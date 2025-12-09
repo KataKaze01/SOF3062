@@ -461,3 +461,86 @@ INSERT INTO products (name, price, image_url, category, stock) VALUES
 
 -- Xác nhận insert thành công
 SELECT 'Đã insert thành công 8 sản phẩm Bách Hóa Online - Lưu Niệm!' AS status;
+
+INSERT INTO products (name, price, image_url, category, stock) VALUES
+('Cây Thông PE Phủ Tuyết 150 cm - Chaang Chia LP-PE1-5', 1347200, '/images/giaodien4/christmas1.png', 'giang sinh ruc ro', 44),
+('Cây Thông PE 3 Loại Lá 180 cm - Cây Tự Động - Chaang Chia LP-PE2', 2112000, '/images/giaodien4/christmas2.png', 'giáng sinh rực rỡ', 35),
+('Cây Thông Phủ Tuyết Toàn Bộ - PE 180 cm - Cây Tự Động', 2306400, '/images/giaodien4/christmas3.png', 'giáng sinh rực rỡ', 35),
+('Cây Thông PE 3 Loại Lá Cước Nở Hoa 150 cm - Cây Tự Động', 1400000, '/images/giaodien4/christmas4.png', 'giáng sinh rực rỡ', 46),
+('Cây Thông Cước Nở Hoa Gắn Trái Thông 180 cm - Cây Tự Động', 826000, '/images/giaodien4/christmas5.png', 'giáng sinh rực rỡ', 73),
+
+('Chậu Cây Mini Trang Trí Giáng Sinh - WanLongDa XY22-675', 178000, '/images/giaodien4/christmas6.png', 'giáng sinh rực rỡ', 15),
+('Cây Thông Mini Cước Đầu Loa Phủ Tuyết - Trang Trí Noel', 187200, '/images/giaodien4/christmas7.png', 'giáng sinh rực rỡ', 12),
+('Cây Thông Mini Trang Trí Noel 30 cm - Chaang Chia LP-TP-D', 54000, '/images/giaodien4/christmas8.png', 'giáng sinh rực rỡ', 25),
+('Chậu Cây Mini Trang Trí Giáng Sinh - WanLongDa XY18F-230', 33000, '/images/giaodien4/christmas9.png', 'giáng sinh rực rỡ', 30),
+('Cây Thông Mini Trang Trí Noel 50 cm - Chaang Chia LP-T20-WSD', 139200, '/images/giaodien4/christmas10.png', 'giáng sinh rực rỡ', 83),
+
+('Mới Set Trang Trí Giáng Sinh Lớn - Set 2', 4416762, '/images/giaodien4/christmas11.png', 'giáng sinh rực rỡ', 27),
+('Mới Set Trang Trí Giáng Sinh Lớn - Set 1', 4217626, '/images/giaodien4/christmas12.png', 'giáng sinh rực rỡ', 21),
+('Mới Set Trang Trí Giáng Sinh Đè Bàn - Set 6', 367500, '/images/giaodien4/christmas13.png', 'giáng sinh rực rỡ', 10),
+
+('Vòng Hoa Phủ Tuyết Trang Trí Giáng Sinh 50 cm - LP-W20-POHS', 330000, '/images/giaodien4/christmas14.png', 'giáng sinh rực rỡ', 89),
+('Vòng Hoa 5 Loại Lá Phủ Tuyết - Trang Trí Giáng Sinh 60 cm', 265500, '/images/giaodien4/christmas15.png', 'giáng sinh rực rỡ', 69),
+('Vòng Hoa W4 Phủ Tuyết - Trang Trí Noel 35 cm', 253500, '/images/giaodien4/christmas16.png', 'giáng sinh rực rỡ', 67),
+('Vòng Hoa Lá PE Gắn Chuông - Trang Trí Noel 55 cm', 251000, '/images/giaodien4/christmas17.png', 'giáng sinh rực rỡ', 66),
+('Vòng Hoa 2 Loại Lá 50 cm - Trang Trí Giáng Sinh', 328500, '/images/giaodien4/christmas18.png', 'giáng sinh rực rỡ', 55),
+
+('Mới Vòng Cỏ Trơn 25 cm - Trang Trí Giáng Sinh - Vinacraft', 46800, '/images/giaodien4/christmas19.png', 'giáng sinh rực rỡ', 20),
+('Mới Vòng Cỏ Trơn 10 cm - Trang Trí Giáng Sinh - Vinacraft', 24300, '/images/giaodien4/christmas20.png', 'giáng sinh rực rỡ', 30),
+('Mới Vòng Cỏ Trơn 20 cm - Trang Trí Giáng Sinh - Vinacraft', 37800, '/images/giaodien4/christmas21.png', 'giáng sinh rực rỡ', 25),
+('Mới Vòng Cỏ Ngôi Sao Trơn 30 cm - Trang Trí Giáng Sinh', 31500, '/images/giaodien4/christmas22.png', 'giáng sinh rực rỡ', 20),
+('Mới Vòng Cỏ Ngôi Sao Trơn 10 cm - Trang Trí Giáng Sinh', 22500, '/images/giaodien4/christmas23.png', 'giáng sinh rực rỡ', 40);
+
+INSERT INTO products (name, price, image_url, category, stock) VALUES
+('Đồ Chơi Lắp Ráp Những Anh Hùng Xa Lộ - Starmerry', 18900, '/images/DC/toy1.png', 'do choi', 100),
+('Đồ Chơi Lắp Ráp Những Anh Hùng Xa Lộ - Starmerry', 18900, '/images/DC/toy2.png', 'do choi', 80),
+
+('Đồ Chơi Mô Hình Xe Cứu Hỏa Chạy Trốn - 7560 (580-18)', 36900, '/images/DC/toy3.png', 'do choi', 120),
+('Đồ Chơi Mô Hình Xe Chở Rác Chạy Trốn - 7560 (580-18)', 36900, '/images/DC/toy4.png', 'do choi', 150),
+('Đồ Chơi Mô Hình Xe Ben Chạy Trốn - 7560 (580-18)', 36900, '/images/DC/toy5.png', 'do choi', 90),
+
+('Đồ Chơi Siêu Xe 3 Bánh Spyder Bán Hybrid Chạy Trốn', 52200, '/images/DC/toy6.png', 'do choi', 80),
+('Đồ Chơi Siêu Xe 3 Bánh Spyder Bán Hybrid Chạy Trốn', 52200, '/images/DC/toy7.png', 'do choi', 110),
+('Đồ Chơi Siêu Xe 3 Bánh Spyder Bán Hybrid Chạy Trốn', 52200, '/images/DC/toy8.png', 'do choi', 140),
+
+('Đồ Chơi Mô Hình Siêu Xe Die-Cast - Six-Six-Zero 7010', 30600, '/images/DC/toy9.png', 'do choi', 100),
+('Đồ Chơi Mô Hình Siêu Xe Die-Cast - Six-Six-Zero 7010', 30600, '/images/DC/toy10.png', 'do choi', 70),
+('Đồ Chơi Mô Hình Siêu Xe Die-Cast - Six-Six-Zero 7010', 30600, '/images/DC/toy11.png', 'do choi', 120),
+
+('Đồ Chơi Trận Chiến Pinball Máy Bay - 7553 (BK107A)', 171900, '/images/DC/toy12.png', 'do choi', 150);
+
+INSERT INTO products (name, price, image_url, category, stock) VALUES
+('Hộp 20 Bút Gel Buttersmooth B 0.5 mm - Thiên Long GELB-034', 75000, '/images/SGK/school1.png', 'SGK', 20),
+('Sổ Lò Xo Read me A6 - Kẻ Ngang 80gsm - WeWrite 423', 27500, '/images/SGK/school2.png', 'SGK', 50),
+('Bút Gel Buttersmooth B 0.5 mm - Thiên Long GELB-033', 4750, '/images/SGK/school3.png', 'SGK', 200),
+('Hộp 20 Bút Gel Buttersmooth B 0.5 mm - Thiên Long GELB-033', 95000, '/images/SGK/school4.png', 'SGK', 20),
+('Lịch Bloc Đại Đặc Biệt Màng Co - Chủ Đề Trà & Thư Pháp', 67500, '/images/SGK/school5.png', 'SGK', 15),
+('Lịch Bloc Siêu Cực Đại - Chủ Đề Phong Cảnh Việt Nam', 302500, '/images/SGK/school6.png', 'SGK', 5),
+('Hộp 20 Bút Gel Buttersmooth B 0.5 mm - Thiên Long GELB-033', 95000, '/images/SGK/school7.png', 'SGK', 12
+);
+
+
+INSERT INTO products (name, price, image_url, category, stock) VALUES
+('Breath - Hơi Thở Nối Dài Sự Sống - Góc Nhìn Mới Về...', 
+ 202500, '/images/spnb/book1.png', 'sản phẩm nổi bật', 870),
+
+('Tâm Trí Chúng Ta Thay Đổi Như Thế Nào', 
+ 143100, '/images/spnb/book2.png', 'sản phẩm nổi bật', 177),
+
+('Nhật Ký Của Cha', 
+ 107100, '/images/spnb/book3.png', 'sản phẩm nổi bật', 843),
+
+('Nhật Kí Nơi Xứ Lạ - Tập 6 - Tặng Kèm Card PVC + Postcard', 
+ 67500, '/images/spnb/book4.png', 'sản phẩm nổi bật', 1100),
+
+('Intentions - Hành Trình Đi Tìm Chính Mình', 
+ 206100, '/images/spnb/book5.png', 'sản phẩm nổi bật', 323),
+
+('Simon Snow - Tập 1 - Lời Sấm Truyền Định Mệnh', 
+ 269100, '/images/spnb/book6.png', 'sản phẩm nổi bật', 177),
+
+('Thoát Bẫy Thao Túng Tiền Bạc', 
+ 152100, '/images/spnb/book7.png', 'sản phẩm nổi bật', 843),
+
+('Người Khôn Chọn Bạn - Người Dại Chọn Bầy', 
+ 161100, '/images/spnb/book8.png', 'sản phẩm nổi bật', 1100);
