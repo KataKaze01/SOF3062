@@ -22,6 +22,8 @@ public class SanPham {
     private LocalDate hanSuDung;
 
     @Column(name = "hinhAnh")
+
+    
     private String hinhAnh;
 
     @Column(name = "nguonGoc", nullable = false)

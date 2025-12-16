@@ -4,6 +4,14 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/dethidot1/student-management-api/student-management-api" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/dethidot1/student-management-api/student-management-api" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/lab5_java6" />
         <option name="modules">
           <set>

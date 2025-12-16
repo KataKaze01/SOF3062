@@ -16,7 +16,7 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="lab5_java6.main" />
+        <module name="student-management-api.main" />
       </profile>
       <profile name="Annotation profile for lab8_java6" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -72,6 +72,9 @@
       <module name="lab8_java6.test" options="-parameters" />
       <module name="poly.demo" options="-parameters" />
       <module name="shop" options="-parameters" />
+      <module name="student-management-api" options="-parameters" />
+      <module name="student-management-api.main" options="-parameters" />
+      <module name="student-management-api.test" options="-parameters" />
     </option>
   </component>
 </project>
