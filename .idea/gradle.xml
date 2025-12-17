@@ -12,6 +12,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/dethidot2/backend/backend" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/dethidot2/backend/backend" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/lab5_java6" />
         <option name="modules">
           <set>
